@@ -709,7 +709,7 @@ main.content {
           distribuida es la presencia de una teoría a través de nueve regiones
           culturales del mundo. Distingue teorías realmente itinerantes de las
           muy centrales pero localizadas.</li>
-        <li><strong>Score Sintético (SS).</strong> Combinación con pesos iguales de los cinco scores anteriores, tras normalizarlos a percentiles. Identifica las teorías con perfil global más fuerte a través de todas las dimensiones.</li>
+        <li><strong>Score Sintético (SS).</strong> Agregación de los cinco scores anteriores. Tras convertir cada puntuación a percentiles, se toma la media de los tres percentiles más altos (top-3 mean) de cada teoría. Premia la relevancia por múltiples razones simultáneas, tolerando que una teoría tenga alguna dimensión débil.</li>
       </ul>
       <p>
         Cada pestaña de score muestra el <strong>objetivo</strong> y la
@@ -735,17 +735,17 @@ main.content {
 
     <div id="viewScoreSintetico" style="display:none;" class="info-view score-view">
       <h2>Score Sintético (SS)</h2>
-      <p><strong>Objetivo.</strong> Agregar en un solo indicador los cinco scores anteriores para identificar las teorías con un perfil global más fuerte a través de todas las dimensiones del catálogo (centralidad, cobertura, transversalidad, persistencia histórica y difusión universal).</p>
-      <p><strong>Metodología.</strong> Para cada teoría y cada uno de los cinco scores se calcula su percentil dentro del ranking correspondiente (0 = la peor, 1 = la mejor), convirtiendo así puntuaciones con escalas muy distintas a un espacio comparable. Después se promedian los cinco percentiles con pesos iguales:</p>
-      <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SS = (1/5)·(P<sub>SI</sub> + P<sub>SC</sub> + P<sub>STD</sub> + P<sub>SPH</sub> + P<sub>SDU</sub>)</p>
-      <p>La normalización por percentiles neutraliza las diferencias de escala entre scores (p. ej. SPH alcanza ~0,98 en su top mientras SC se queda en ~0,58) y la media aritmética con pesos iguales no privilegia ninguna dimensión. El SS resultante es interpretable directamente como «percentil medio»: una teoría con SS=0,90 está, en promedio, en el 10 % superior de los cinco rankings.</p>
+      <p><strong>Objetivo.</strong> Agregar en un solo indicador los cinco scores anteriores para identificar las teorías con mayor relevancia en el corpus, entendida como «ser fuerte en varias dimensiones simultáneamente» (centralidad, cobertura, transversalidad, persistencia histórica o difusión universal).</p>
+      <p><strong>Metodología.</strong> Para cada teoría y cada uno de los cinco scores se calcula su percentil dentro del ranking correspondiente (0 = la peor, 1 = la mejor), convirtiendo puntuaciones con escalas distintas a un espacio comparable. Después, para cada teoría se toma la media de sus <strong>tres percentiles más altos</strong> (top-3 mean):</p>
+      <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SS<sub>i</sub> = (1/3)·Σ de los 3 percentiles más altos de {P<sub>SI</sub>, P<sub>SC</sub>, P<sub>STD</sub>, P<sub>SPH</sub>, P<sub>SDU</sub>}</p>
+      <p>Esta elección prioriza la <em>relevancia por múltiples razones</em> sobre la solidez uniforme. Una teoría fundamental en su campo puede tener una dimensión débil (p. ej. una tradición espiritual con baja transversalidad disciplinar) sin que eso la desaloje del top. Solo las dos dimensiones más flojas se ignoran; las tres mejores deben ser altas. El SS es interpretable como «percentil promedio en las tres dimensiones donde esta teoría destaca».</p>
       <h3 style="margin-top:32px;">Top 10 de teorías por SS</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">1</span>
         <a href="#" class="score-entry-title" onclick="openDetail(31); return false;">Enactivismo</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9457</span>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9894</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Francisco Varela, Evan Thompson, Eleanor Rosch</span>
@@ -761,42 +761,25 @@ main.content {
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">2</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(106); return false;">Cognitivismo computacional</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9086</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(147); return false;">Cosmovisión vedanta advaita</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9744</span>
       </div>
       <div class="score-entry-meta">
-        <span><strong>Autores:</strong> George Miller, Jerome Bruner, Ulric Neisser, Herbert Simon</span>
-        <span><strong>Disciplina:</strong> Psicología</span>
-        <span><strong>Época:</strong> Segunda mitad siglo XX</span>
-        <span><strong>Región:</strong> Norteamérica · Estados Unidos</span>
+        <span><strong>Autores:</strong> Adi Shankara (sintetizador)</span>
+        <span><strong>Disciplina:</strong> Espiritualidad</span>
+        <span><strong>Época:</strong> Antigüedad (≤500 d.C.)</span>
+        <span><strong>Región:</strong> India / Sur de Asia · India</span>
       </div>
-      <div class="score-entry-desc">La mente como sistema de procesamiento de información análogo a un ordenador: percibir, recordar, razonar y decidir son operaciones sobre representaciones internas gobernadas por reglas formales.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.99 · SC&nbsp;0.92 · STD&nbsp;0.99 · SPH&nbsp;0.82 · SDU&nbsp;0.81</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(106); return false;">Ver ficha completa →</a></div>
+      <div class="score-entry-desc">El vedanta advaita (no-dualidad) es una de las grandes escuelas de filosofía india, sistematizada principalmente por Shankara en el siglo VIII, aunque sus raíces se hunden en las Upanishads (composiciones anónimas del primer milenio a.C.) y…</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.93 · SC&nbsp;0.35 · STD&nbsp;0.53 · SPH&nbsp;1.00 · SDU&nbsp;1.00</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(147); return false;">Ver ficha completa →</a></div>
     </div>
 
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">3</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(96); return false;">Hipótesis de Gaia</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8561</span>
-      </div>
-      <div class="score-entry-meta">
-        <span><strong>Autores:</strong> James Lovelock, Lynn Margulis</span>
-        <span><strong>Disciplina:</strong> Biología</span>
-        <span><strong>Época:</strong> Segunda mitad siglo XX</span>
-        <span><strong>Región:</strong> Europa · Reino Unido / Estados Unidos</span>
-      </div>
-      <div class="score-entry-desc">Lovelock y Margulis postulan que la biosfera terrestre se autoregula como un sistema global; algunas lecturas posteriores la interpretan como un proto-organismo o incluso como una proto-consciencia planetaria.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.91 · SC&nbsp;0.63 · STD&nbsp;0.98 · SPH&nbsp;0.80 · SDU&nbsp;0.96</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(96); return false;">Ver ficha completa →</a></div>
-    </div>
-
-    <div class="score-entry">
-      <div class="score-entry-header">
-        <span class="score-entry-rank">4</span>
         <a href="#" class="score-entry-title" onclick="openDetail(151); return false;">Anātman budista</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8489</span>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9729</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Buda Śākyamuni, Nāgārjuna, Vasubandhu</span>
@@ -811,60 +794,60 @@ main.content {
 
     <div class="score-entry">
       <div class="score-entry-header">
-        <span class="score-entry-rank">5</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(34); return false;">Autopoiesis</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8466</span>
+        <span class="score-entry-rank">4</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(106); return false;">Cognitivismo computacional</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9683</span>
       </div>
       <div class="score-entry-meta">
-        <span><strong>Autores:</strong> Humberto Maturana, Francisco Varela</span>
-        <span><strong>Disciplina:</strong> Biología</span>
+        <span><strong>Autores:</strong> George Miller, Jerome Bruner, Ulric Neisser, Herbert Simon</span>
+        <span><strong>Disciplina:</strong> Psicología</span>
         <span><strong>Época:</strong> Segunda mitad siglo XX</span>
-        <span><strong>Región:</strong> Latinoamérica · Chile</span>
+        <span><strong>Región:</strong> Norteamérica · Estados Unidos</span>
       </div>
-      <div class="score-entry-desc">Maturana y Varela definen la vida como un sistema autopoiético: una red molecular que se produce continuamente a sí misma manteniendo sus fronteras; base biológica del enactivismo posterior.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.86 · SC&nbsp;0.90 · STD&nbsp;0.77 · SPH&nbsp;0.77 · SDU&nbsp;0.92</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(34); return false;">Ver ficha completa →</a></div>
+      <div class="score-entry-desc">La mente como sistema de procesamiento de información análogo a un ordenador: percibir, recordar, razonar y decidir son operaciones sobre representaciones internas gobernadas por reglas formales.</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.99 · SC&nbsp;0.92 · STD&nbsp;0.99 · SPH&nbsp;0.82 · SDU&nbsp;0.81</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(106); return false;">Ver ficha completa →</a></div>
+    </div>
+
+    <div class="score-entry">
+      <div class="score-entry-header">
+        <span class="score-entry-rank">5</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(57); return false;">Teoría de la información integrada</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9653</span>
+      </div>
+      <div class="score-entry-meta">
+        <span><strong>Autores:</strong> Giulio Tononi, Christof Koch</span>
+        <span><strong>Disciplina:</strong> Neurociencia</span>
+        <span><strong>Época:</strong> Siglo XXI</span>
+        <span><strong>Región:</strong> Norteamérica · Italia / Estados Unidos</span>
+      </div>
+      <div class="score-entry-desc">Tononi formaliza la consciencia como información integrada (Φ): un sistema es consciente en la medida en que mantiene información como un todo unificado irreducible a la suma de sus partes.</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;1.00 · SC&nbsp;0.94 · STD&nbsp;0.65 · SPH&nbsp;0.49 · SDU&nbsp;0.95</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(57); return false;">Ver ficha completa →</a></div>
     </div>
 
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">6</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(159); return false;">Taoísmo y wu wei</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8385</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(96); return false;">Hipótesis de Gaia</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9517</span>
       </div>
       <div class="score-entry-meta">
-        <span><strong>Autores:</strong> Laozi, Zhuangzi</span>
-        <span><strong>Disciplina:</strong> Espiritualidad</span>
-        <span><strong>Época:</strong> Antigüedad (≤500 d.C.)</span>
-        <span><strong>Región:</strong> Asia oriental · China</span>
+        <span><strong>Autores:</strong> James Lovelock, Lynn Margulis</span>
+        <span><strong>Disciplina:</strong> Biología</span>
+        <span><strong>Época:</strong> Segunda mitad siglo XX</span>
+        <span><strong>Región:</strong> Europa · Reino Unido / Estados Unidos</span>
       </div>
-      <div class="score-entry-desc">Tradición china (Laozi, Zhuangzi) centrada en el Tao —la Vía— y el wu wei (no-acción espontánea, acción sin forzar). La consciencia se cultiva vaciándose para fluir con el orden espontáneo del cosmos.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.70 · SC&nbsp;1.00 · STD&nbsp;0.71 · SPH&nbsp;0.96 · SDU&nbsp;0.82</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(159); return false;">Ver ficha completa →</a></div>
+      <div class="score-entry-desc">Lovelock y Margulis postulan que la biosfera terrestre se autoregula como un sistema global; algunas lecturas posteriores la interpretan como un proto-organismo o incluso como una proto-consciencia planetaria.</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.91 · SC&nbsp;0.63 · STD&nbsp;0.98 · SPH&nbsp;0.80 · SDU&nbsp;0.96</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(96); return false;">Ver ficha completa →</a></div>
     </div>
 
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">7</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(29); return false;">Teoría del centro narrativo de gravedad</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8235</span>
-      </div>
-      <div class="score-entry-meta">
-        <span><strong>Autores:</strong> Daniel Dennett</span>
-        <span><strong>Disciplina:</strong> Filosofía</span>
-        <span><strong>Época:</strong> Segunda mitad siglo XX</span>
-        <span><strong>Región:</strong> Norteamérica · Estados Unidos</span>
-      </div>
-      <div class="score-entry-desc">Dennett propone que el yo es un «centro narrativo de gravedad»: una ficción útil generada por los múltiples borradores de narrativa que el cerebro construye, sin que haya un yo sustancial detrás de ellas.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.92 · SC&nbsp;0.78 · STD&nbsp;0.81 · SPH&nbsp;0.81 · SDU&nbsp;0.79</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(29); return false;">Ver ficha completa →</a></div>
-    </div>
-
-    <div class="score-entry">
-      <div class="score-entry-header">
-        <span class="score-entry-rank">8</span>
         <a href="#" class="score-entry-title" onclick="openDetail(25); return false;">Pragmatismo y consciencia stream</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8186</span>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9397</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> William James</span>
@@ -879,42 +862,59 @@ main.content {
 
     <div class="score-entry">
       <div class="score-entry-header">
-        <span class="score-entry-rank">9</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(138); return false;">Sistemas complejos y emergencia</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8172</span>
+        <span class="score-entry-rank">8</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(22); return false;">Cosmopsiquismo</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9276</span>
       </div>
       <div class="score-entry-meta">
-        <span><strong>Autores:</strong> Stuart Kauffman, Murray Gell-Mann</span>
-        <span><strong>Disciplina:</strong> Biología</span>
-        <span><strong>Época:</strong> Segunda mitad siglo XX</span>
-        <span><strong>Región:</strong> Norteamérica · Estados Unidos</span>
+        <span><strong>Autores:</strong> Philip Goff, Yujin Nagasawa, Itay Shani</span>
+        <span><strong>Disciplina:</strong> Filosofía</span>
+        <span><strong>Época:</strong> Siglo XXI</span>
+        <span><strong>Región:</strong> Europa · Reino Unido / Japón</span>
       </div>
-      <div class="score-entry-desc">Kauffman, Gell-Mann y la tradición de Santa Fe estudian cómo comportamientos colectivos coherentes emergen de muchas interacciones locales simples; la consciencia se lee como una propiedad emergente del cerebro.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.81 · SC&nbsp;0.90 · STD&nbsp;0.76 · SPH&nbsp;0.71 · SDU&nbsp;0.90</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(138); return false;">Ver ficha completa →</a></div>
+      <div class="score-entry-desc">Variante del panpsiquismo que postula que lo primariamente consciente es el cosmos entero; las mentes individuales serían disociaciones locales de esa consciencia cósmica unificada.</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.96 · SC&nbsp;0.23 · STD&nbsp;0.82 · SPH&nbsp;0.47 · SDU&nbsp;1.00</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(22); return false;">Ver ficha completa →</a></div>
+    </div>
+
+    <div class="score-entry">
+      <div class="score-entry-header">
+        <span class="score-entry-rank">9</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(159); return false;">Taoísmo y wu wei</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9276</span>
+      </div>
+      <div class="score-entry-meta">
+        <span><strong>Autores:</strong> Laozi, Zhuangzi</span>
+        <span><strong>Disciplina:</strong> Espiritualidad</span>
+        <span><strong>Época:</strong> Antigüedad (≤500 d.C.)</span>
+        <span><strong>Región:</strong> Asia oriental · China</span>
+      </div>
+      <div class="score-entry-desc">Tradición china (Laozi, Zhuangzi) centrada en el Tao —la Vía— y el wu wei (no-acción espontánea, acción sin forzar). La consciencia se cultiva vaciándose para fluir con el orden espontáneo del cosmos.</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.70 · SC&nbsp;1.00 · STD&nbsp;0.71 · SPH&nbsp;0.96 · SDU&nbsp;0.82</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(159); return false;">Ver ficha completa →</a></div>
     </div>
 
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">10</span>
-        <a href="#" class="score-entry-title" onclick="openDetail(32); return false;">Cognición encarnada</a>
-        <span class="score-entry-value">SS&nbsp;=&nbsp;0.8163</span>
+        <a href="#" class="score-entry-title" onclick="openDetail(38); return false;">Procesamiento predictivo</a>
+        <span class="score-entry-value">SS&nbsp;=&nbsp;0.9261</span>
       </div>
       <div class="score-entry-meta">
-        <span><strong>Autores:</strong> George Lakoff, Mark Johnson, Antonio Damasio (precursores)</span>
-        <span><strong>Disciplina:</strong> Ciencias cognitivas</span>
-        <span><strong>Época:</strong> Segunda mitad siglo XX</span>
-        <span><strong>Región:</strong> Norteamérica · Estados Unidos</span>
+        <span><strong>Autores:</strong> Karl Friston, Andy Clark, Jakob Hohwy</span>
+        <span><strong>Disciplina:</strong> Neurociencia</span>
+        <span><strong>Época:</strong> Siglo XXI</span>
+        <span><strong>Región:</strong> Europa · Reino Unido / Australia</span>
       </div>
-      <div class="score-entry-desc">Familia de enfoques (Lakoff, Johnson, Damasio, Varela) que sostienen que la cognición está moldeada por el cuerpo: pensar, percibir y razonar emergen de las posibilidades y limitaciones de un cuerpo concreto en un entorno.</div>
-      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.93 · SC&nbsp;0.58 · STD&nbsp;0.86 · SPH&nbsp;0.78 · SDU&nbsp;0.93</div>
-      <div class="score-entry-link"><a href="#" onclick="openDetail(32); return false;">Ver ficha completa →</a></div>
+      <div class="score-entry-desc">Una imagen tradicional de la percepción: los sentidos recogen datos del mundo y el cerebro los procesa hacia arriba para formar representaciones. El procesamiento predictivo invierte por completo esta imagen. Según autores como Karl Friston…</div>
+      <div class="score-entry-breakdown" style="font-family:Inter,sans-serif; font-size:12px; color:var(--muted); margin-top:4px;">SI&nbsp;0.98 · SC&nbsp;0.99 · STD&nbsp;0.49 · SPH&nbsp;0.49 · SDU&nbsp;0.81</div>
+      <div class="score-entry-link"><a href="#" onclick="openDetail(38); return false;">Ver ficha completa →</a></div>
     </div>
       </div>
       <h3>Lectura del top 10</h3>
-      <p>El top 10 del SS dibuja el corazón interdisciplinar del catálogo: el <em>enactivismo</em> lidera con un SS casi perfecto (0,95) porque articula simultáneamente filosofía de la mente, ciencia cognitiva, fenomenología y biología latinoamericana. El <em>cognitivismo computacional</em> y la <em>autopoiesis</em> lo acompañan con perfiles igual de equilibrados. Es notable la presencia de la <em>hipótesis de Gaia</em> en tercer puesto: una teoría de los años 70, controvertida en su recepción inicial, que aquí emerge como un hub teórico global-transdisciplinar.</p>
-      <p>El top 10 combina tradiciones antiguas (<em>anātman budista</em>, <em>taoísmo y wu wei</em>) con núcleos contemporáneos (<em>IIT</em>, <em>GWT</em>, <em>funcionalismo</em>, <em>naturalismo biológico</em>), centrándose en teorías que logran mantenerse relevantes <em>y además</em> hacerse globales. El <em>pragmatismo de James</em> y el <em>centro narrativo de Dennett</em> aparecen como puntos de articulación entre filosofía analítica y psicología empírica, mientras que los <em>sistemas complejos y emergencia</em> y la <em>cognición encarnada</em> representan la creciente convergencia entre biología, física de sistemas y ciencia cognitiva.</p>
-      <p>Donde el SS es más exigente es con las teorías fuertemente localizadas: algunas tradiciones con SPH espectacular (yogacara, neoplatonismo) pero débil SI actual o SDU limitada no logran entrar al top 10. Y al revés: teorías como la IIT (puesto 12) tienen un SI casi perfecto pero un SPH flojo (0,49) que las penaliza por ser demasiado jóvenes. El SS es, por tanto, una prueba de «teorías que son importantes por múltiples razones simultáneamente», no solo por una.</p>
+      <p>El ranking del Score Sintético revela las teorías que se pueden considerar más relevantes del corpus por ser importantes desde varios ángulos a la vez. El <em>enactivismo</em> lidera con un SS casi perfecto (0,989) porque articula simultáneamente filosofía de la mente, ciencia cognitiva, fenomenología y biología latinoamericana, con percentiles ≥ 0,83 en las cinco dimensiones. A continuación aparecen la <em>cosmovisión vedanta advaita</em> (0,974) y el <em>anātman budista</em> (0,973), dos tradiciones antiguas que ocupan el tope en persistencia y difusión universal aunque floreen bajo en transversalidad disciplinar; el top-3 mean las protege de esa debilidad específica.</p>
+      <p>El top 10 combina tradiciones milenarias con propuestas contemporáneas fundacionales. De la neurociencia y filosofía de la mente actuales aparecen la <em>IIT</em> (puesto 5), la <em>hipótesis de Gaia</em> (6), el <em>cosmopsiquismo</em> (8) y el <em>procesamiento predictivo</em> (10); del pensamiento clásico entran el <em>pragmatismo de James</em> (7) y el <em>taoísmo y wu wei</em> (9). La presencia conjunta de IIT y vedanta advaita, o de cosmopsiquismo y anātman budista, ilustra precisamente por qué este ranking es interesante: son teorías que se relacionan conceptualmente aunque vengan de tradiciones opuestas.</p>
+      <p>El SS elige relevancia sobre equilibrio. Una teoría como la <em>fenomenología de la encarnación</em> (puesto 15, SS=0,906) con un STD muy alto pero un SC bajo o una <em>IIT</em> con SPH bajo por ser del s. XXI pero SI casi perfecto, mantienen su sitio porque brillan en tres dimensiones. El top-3 mean subraya la idea de que una teoría puede ser central para el catálogo por razones distintas a «ser sólida en todo».</p>
     </div>
 
     <div id="viewScoreIntegracion" style="display:none;" class="info-view score-view">
