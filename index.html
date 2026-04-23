@@ -610,8 +610,8 @@ main.content {
       <button class="view-tab active" data-view="list">Listado</button>
       <button class="view-tab" data-view="map">Mapa de conexiones</button>
       <button class="view-tab" data-view="score-integracion">Score de Integración</button>
-      <button class="view-tab" data-view="score-transversalidad">Score de Transversalidad</button>
       <button class="view-tab" data-view="score-cobertura">Score de Cobertura</button>
+      <button class="view-tab" data-view="score-transversalidad">Score de Transversalidad Disciplinar</button>
       <button class="view-tab" data-view="score-persistencia">Score de Persistencia Histórica</button>
       <button class="view-tab" data-view="score-difusion">Score de Difusión Universal</button>
       <button class="view-tab" data-view="info">Acerca de</button>
@@ -693,13 +693,13 @@ main.content {
           una teoría en el entramado global de influencias. Combina cuatro
           centralidades clásicas del análisis de redes: grado, intermediación,
           vector propio y cercanía.</li>
-        <li><strong>Score de Transversalidad (ST).</strong> Cuán interdisciplinar es
-          una teoría, medido por la proporción de conexiones que tiene fuera de
-          su propia disciplina y por la diversidad de disciplinas con las que
-          dialoga.</li>
         <li><strong>Score de Cobertura (SC).</strong> Qué fracción del catálogo puede
           alcanzarse desde una teoría en dos saltos, penalizando la redundancia
           de caminos. Identifica buenas puertas de entrada al corpus.</li>
+        <li><strong>Score de Transversalidad Disciplinar (ST).</strong> Cuán interdisciplinar es
+          una teoría, medido por la proporción de conexiones que tiene fuera de
+          su propia disciplina y por la diversidad de disciplinas con las que
+          dialoga.</li>
         <li><strong>Score de Persistencia Histórica (SPH).</strong> Cuán relevante ha
           sido una teoría a lo largo de siete grandes épocas del pensamiento
           sobre la consciencia, de la Antigüedad al siglo XXI. Premia longevidad
@@ -906,7 +906,7 @@ main.content {
     </div>
 
     <div id="viewScoreTransversalidad" style="display:none;" class="info-view score-view">
-      <h2>Score de Transversalidad (ST)</h2>
+      <h2>Score de Transversalidad Disciplinar (ST)</h2>
       <p><strong>Objetivo.</strong> Medir cuán interdisciplinar es una teoría. Un ST alto indica que la teoría no se queda confinada en su disciplina de origen sino que se comunica con voces de otras ramas del saber sobre la consciencia.</p>
       <p><strong>Metodología.</strong> Para cada teoría <em>i</em> con vecinos en el grafo, se calculan dos cantidades:</p>
 <p style="padding-left:20px;">
