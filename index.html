@@ -696,7 +696,7 @@ main.content {
         <li><strong>Score de Cobertura (SC).</strong> Qué fracción del catálogo puede
           alcanzarse desde una teoría en dos saltos, penalizando la redundancia
           de caminos. Identifica buenas puertas de entrada al corpus.</li>
-        <li><strong>Score de Transversalidad Disciplinar (ST).</strong> Cuán interdisciplinar es
+        <li><strong>Score de Transversalidad Disciplinar (STD).</strong> Cuán interdisciplinar es
           una teoría, medido por la proporción de conexiones que tiene fuera de
           su propia disciplina y por la diversidad de disciplinas con las que
           dialoga.</li>
@@ -906,19 +906,19 @@ main.content {
     </div>
 
     <div id="viewScoreTransversalidad" style="display:none;" class="info-view score-view">
-      <h2>Score de Transversalidad Disciplinar (ST)</h2>
-      <p><strong>Objetivo.</strong> Medir cuán interdisciplinar es una teoría. Un ST alto indica que la teoría no se queda confinada en su disciplina de origen sino que se comunica con voces de otras ramas del saber sobre la consciencia.</p>
+      <h2>Score de Transversalidad Disciplinar (STD)</h2>
+      <p><strong>Objetivo.</strong> Medir cuán interdisciplinar es una teoría. Un STD alto indica que la teoría no se queda confinada en su disciplina de origen sino que se comunica con voces de otras ramas del saber sobre la consciencia.</p>
       <p><strong>Metodología.</strong> Para cada teoría <em>i</em> con vecinos en el grafo, se calculan dos cantidades:</p>
 <p style="padding-left:20px;"><strong>1. Porcentaje de conexiones fuera de disciplina</strong>: proporción de vecinos cuya disciplina no coincide con la de <em>i</em>.<br><strong>2. Diversidad disciplinar</strong>: entropía de Shannon sobre las disciplinas de los vecinos, normalizada por log<sub>2</sub>(12) (hay K=12 disciplinas en el catálogo).</p>
-<p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">ST = 0,5·(% fuera disciplina) + 0,5·(diversidad disciplinar)</p>
-<p>El primer término premia estar fuera del propio silo; el segundo penaliza concentrarse en una sola disciplina ajena, premiando en cambio el reparto equitativo entre varias. Las teorías con menos de dos conexiones reciben ST=0 por convención.</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por ST</h3>
+<p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">STD = 0,5·(% fuera disciplina) + 0,5·(diversidad disciplinar)</p>
+<p>El primer término premia estar fuera del propio silo; el segundo penaliza concentrarse en una sola disciplina ajena, premiando en cambio el reparto equitativo entre varias. Las teorías con menos de dos conexiones reciben STD=0 por convención.</p>
+      <h3 style="margin-top:32px;">Top 10 de teorías por STD</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
         <span class="score-entry-rank">1</span>
         <a href="#" class="score-entry-title" onclick="openDetail(175); return false;">Punto Omega de Teilhard y noosfera</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.8201</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.8201</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Pierre Teilhard de Chardin</span>
@@ -934,7 +934,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">2</span>
         <a href="#" class="score-entry-title" onclick="openDetail(132); return false;">Hipótesis del cerebro social</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7681</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7681</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Robin Dunbar</span>
@@ -950,7 +950,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">3</span>
         <a href="#" class="score-entry-title" onclick="openDetail(106); return false;">Cognitivismo computacional</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7657</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7657</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> George Miller, Jerome Bruner, Ulric Neisser, Herbert Simon</span>
@@ -966,7 +966,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">4</span>
         <a href="#" class="score-entry-title" onclick="openDetail(96); return false;">Hipótesis de Gaia</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7558</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7558</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> James Lovelock, Lynn Margulis</span>
@@ -982,7 +982,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">5</span>
         <a href="#" class="score-entry-title" onclick="openDetail(117); return false;">Constructivismo social del yo</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7548</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7548</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Kenneth Gergen, John Shotter</span>
@@ -998,7 +998,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">6</span>
         <a href="#" class="score-entry-title" onclick="openDetail(220); return false;">Fenomenología de la encarnación</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7503</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7503</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Maurice Merleau-Ponty</span>
@@ -1014,7 +1014,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">7</span>
         <a href="#" class="score-entry-title" onclick="openDetail(131); return false;">Neurociencia social y neuronas espejo</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7500</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7500</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Giacomo Rizzolatti, Vittorio Gallese</span>
@@ -1030,7 +1030,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">8</span>
         <a href="#" class="score-entry-title" onclick="openDetail(181); return false;">Perspectivismo amerindio</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7500</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7500</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Eduardo Viveiros de Castro</span>
@@ -1046,7 +1046,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">9</span>
         <a href="#" class="score-entry-title" onclick="openDetail(31); return false;">Enactivismo</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7493</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7493</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Francisco Varela, Evan Thompson, Eleanor Rosch</span>
@@ -1062,7 +1062,7 @@ main.content {
       <div class="score-entry-header">
         <span class="score-entry-rank">10</span>
         <a href="#" class="score-entry-title" onclick="openDetail(110); return false;">Sistema 1 / Sistema 2</a>
-        <span class="score-entry-value">ST&nbsp;=&nbsp;0.7382</span>
+        <span class="score-entry-value">STD&nbsp;=&nbsp;0.7382</span>
       </div>
       <div class="score-entry-meta">
         <span><strong>Autores:</strong> Daniel Kahneman, Amos Tversky</span>
@@ -1077,7 +1077,7 @@ main.content {
       <h3>Lectura del top 10</h3>
 <p>La transversalidad dibuja un mapa muy distinto al de la integración: aparecen teorías que hacen de bisagra entre campos históricamente separados. <em>Punto Omega de Teilhard</em> (teología ↔ biología ↔ cosmología), <em>hipótesis del cerebro social</em> (antropología ↔ neurociencia ↔ psicología evolutiva), <em>cognitivismo computacional</em> (psicología ↔ filosofía ↔ computación) e <em>hipótesis de Gaia</em> (biología ↔ ciencia de sistemas ↔ ecología profunda) son ejemplos de teorías cuyo sentido solo se capta mirando a la vez a varias disciplinas.</p>
 <p>También destacan tradiciones que problematizan la propia demarcación disciplinar: el <em>perspectivismo amerindio</em> (antropología y filosofía del ser), la <em>fenomenología de la encarnación</em> (filosofía y ciencias cognitivas), la <em>neurociencia social y las neuronas espejo</em> (neurociencia, psicología y filosofía de la mente), el <em>constructivismo social del yo</em> (sociología, psicología, filosofía) y el <em>enactivismo</em> (ciencia cognitiva, biología y fenomenología). Son teorías que o bien nacen en la intersección o bien son absorbidas por múltiples campos vecinos poco después de su formulación.</p>
-<p>El ST ayuda a identificar las zonas de frontera del catálogo: ideas útiles para construir cursos, paneles o ensayos interdisciplinares, porque ya vienen con vínculos consolidados hacia varios lenguajes. A diferencia del SI, que selecciona nodos populares dentro de su clúster, el ST selecciona nodos que funcionan como traductores entre clústeres.</p>
+<p>El STD ayuda a identificar las zonas de frontera del catálogo: ideas útiles para construir cursos, paneles o ensayos interdisciplinares, porque ya vienen con vínculos consolidados hacia varios lenguajes. A diferencia del SI, que selecciona nodos populares dentro de su clúster, el STD selecciona nodos que funcionan como traductores entre clústeres.</p>
     </div>
 
     <div id="viewScoreCobertura" style="display:none;" class="info-view score-view">
