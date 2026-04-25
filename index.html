@@ -1220,56 +1220,41 @@ main.content {
         El análisis de <strong>clusters emergentes</strong> es complementario al de los scores: en lugar
         de medir cada teoría con cinco indicadores, agrupa todo el catálogo en familias o corrientes
         que emergen de la propia estructura de conexiones. Se aplica el algoritmo
-        <em>Louvain</em> sobre el grafo de las 222 teorías y se obtiene una partición en
-        <strong>7 clusters</strong> con modularidad 0,561 (>0,4 ya se considera una partición fuerte),
-        sin imponer ninguna clasificación previa por disciplina, época o región.
-      </p>
-      <p>
-        Los siete clusters tienen identidad temática muy clara: <em>cognición encarnada y enactiva</em>,
-        <em>funcionalismo computacional y filosofía analítica</em>, <em>tradiciones contemplativas y ciencia
-        de la meditación</em>, <em>metafísicas idealistas y panpsíquicas</em>, <em>consciencia como construcción
-        sociocultural</em>, <em>neurociencia empírica estricta</em> y <em>cosmovisiones indígenas y animistas</em>.
-        Para cada uno se identifican sus teorías centrales (las más conectadas dentro del cluster) y sus
-        teorías puente (las que conectan con los demás clusters), permitiendo leer el corpus desde una
-        lógica complementaria a la de los scores.
+        <em>Louvain</em> sobre el grafo de las 222 teorías sin imponer ninguna clasificación previa por
+        disciplina, época o región. La calidad de la partición se evalúa con la métrica de
+        <em>modularidad</em>, que captura cuándo un agrupamiento es real porque los nodos del mismo
+        grupo están más conectados entre sí de lo esperable por azar. Para cada cluster resultante se
+        identifican sus <strong>teorías centrales</strong> (las más conectadas internamente) y sus
+        <strong>teorías puente</strong> (las que conectan con los demás clusters mediante alta
+        intermediación), permitiendo leer el corpus desde una lógica complementaria a la de los scores.
       </p>
       <h3>Teorías vertebradoras</h3>
       <p>
-        Cruzando el Score Sintético con el análisis de clusters emergentes y el alcance de cobertura
-        en el grafo, emergen <strong>cinco teorías vertebradoras del corpus</strong>: <em>Enactivismo</em>
-        (Varela, Thompson, Rosch), <em>Teoría de la información integrada</em> (Tononi, Koch),
-        <em>Cognitivismo computacional</em> (Miller, Bruner, Simon), <em>Cosmovisión vedanta advaita</em>
-        (Shankara) y <em>Constructivismo social del yo</em> (Mead, Cooley, Gergen). Cada una abre un
-        cluster distinto y, en conjunto, alcanzan el <strong>96,4&nbsp;%</strong> del catálogo en dos
-        saltos por el grafo de conexiones.
-      </p>
-      <p>
-        Constituyen una "biblioteca mínima" muy equilibrada: tres teorías del debate
-        cognitivo-neurocientífico contemporáneo, una tradición milenaria que abre el universo
-        contemplativo, y una teoría de las ciencias sociales que abre el universo construccionista.
-        Estos cinco nombres permiten abrir prácticamente cualquier debate del catálogo.
+        Las <strong>teorías vertebradoras</strong> del corpus se identifican cruzando tres análisis
+        independientes: el Score Sintético (perfil multidimensional), los clusters emergentes
+        (representatividad interna y proyección hacia otros grupos) y la cobertura óptima del grafo
+        (qué subconjunto de teorías permite alcanzar la mayor parte del catálogo en dos saltos por
+        las conexiones). La convergencia de los tres criterios señala un conjunto reducido de teorías
+        que son simultáneamente <em>centrales en su cluster</em> y <em>proyectivas hacia el resto del
+        corpus</em>, ofreciendo una "biblioteca mínima" capaz de abrir el conjunto del catálogo desde
+        un número pequeño de puntos de entrada.
       </p>
       <h3>Propuesta de unificación</h3>
       <p>
-        A partir de las cinco teorías vertebradoras se proponen <strong>dos alternativas de teoría
-        unificada</strong> de la consciencia, ambas con estructura jerárquica y diferenciadas por su
-        compromiso ontológico de fondo:
+        A partir de las teorías vertebradoras se ensaya un ejercicio de <strong>integración teórica</strong>:
+        en lugar de tratarlas como rivales, se exploran modelos en los que cada una se articule como
+        descripción de un nivel distinto del mismo fenómeno. Para que la integración sea efectiva y no
+        meramente yuxtapuesta, se adopta una estructura <strong>jerárquica</strong>: una de las teorías
+        ocupa la posición fundacional ontológica y las demás se articulan sobre ella como descripciones
+        de niveles sucesivos.
       </p>
-      <ul>
-        <li><strong>Alternativa A · Modelo idealista · Vedanta como fundamento.</strong>
-          La consciencia universal es ontológicamente primaria; la IIT, el enactivismo y el cognitivismo
-          describen cómo se individúa en cuerpos humanos concretos, y el constructivismo añade el
-          modelado social del yo.</li>
-        <li><strong>Alternativa B · Modelo materialista · IIT como fundamento.</strong>
-          La materia con información integrada es el sustrato; sobre ella aparecen sucesivamente
-          la vida encarnada (enactivismo), las funciones cognitivas (cognitivismo), el yo social
-          (constructivismo) y, en su cumbre fenomenológica, el reconocimiento del fondo único de
-          aparición (Vedanta).</li>
-      </ul>
       <p>
-        Las dos propuestas se desarrollan en detalle en su pestaña correspondiente. Se presentan
-        como alternativas igualmente articulables; el lector puede elegir cuál le resulta más
-        convincente según sus propias intuiciones de fondo.
+        El compromiso jerárquico obliga a decidir qué nivel se asume como fundamento. Esto admite dos
+        posiciones ontológicas opuestas — una <em>idealista</em> (la consciencia es primaria) y otra
+        <em>materialista-emergentista</em> (la materia es primaria) — que conducen a dos arquitecturas
+        coherentes pero distintas. Por eso se desarrollan <strong>dos alternativas</strong>, presentadas
+        como igualmente articulables; el lector puede elegir cuál le resulta más convincente según sus
+        propias intuiciones de fondo.
       </p>
       <h3>Limitaciones</h3>
       <p>
