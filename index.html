@@ -642,6 +642,7 @@ main.content {
       <button class="view-tab" data-view="map">MAPA DE CONEXIONES</button>
       <button class="view-tab" data-top="scores">SCORE DE RELEVANCIA</button>
       <button class="view-tab" data-view="clusters">CLUSTERS EMERGENTES</button>
+      <button class="view-tab" data-view="conclusiones">CONCLUSIONES</button>
       <button class="view-tab" data-view="info">Acerca de</button>
     </div>
     <div class="view-subtabs" id="scoreSubtabs" style="display:none;">
@@ -868,6 +869,117 @@ main.content {
       </ol>
     </div>
 
+    <div id="viewConclusiones" style="display:none;" class="info-view score-view">
+      <h2>Conclusiones — las 5 embajadoras del corpus</h2>
+      <p>Cruzando el <strong>Score Sintético</strong> con el análisis de <strong>clusters emergentes</strong>, emerge una "biblioteca mínima" de cinco teorías que cubren prácticamente todo el catálogo. Cada una es óptima desde dos criterios independientes que convergen en el mismo nombre: son a la vez <em>localmente representativas</em> (centrales en su cluster) y <em>globalmente proyectivas</em> (relevantes en múltiples scores).</p>
+
+      <h3 style="margin-top:32px;">Las 5 embajadoras</h3>
+      <table style="width:100%; border-collapse:collapse; margin: 12px 0 24px; font-size:14px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border); text-align:left;">
+            <th style="padding:8px 6px; width:40px;">#</th>
+            <th style="padding:8px 6px;">Teoría</th>
+            <th style="padding:8px 6px;">Cluster que abre</th>
+            <th style="padding:8px 6px;">Por qué cluster</th>
+            <th style="padding:8px 6px;">Por qué Score Sintético</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 6px; vertical-align:top;">1</td>
+            <td style="padding:8px 6px; vertical-align:top;"><a href="#" onclick="openDetail(31); return false;"><strong>Enactivismo</strong></a><br><span style="color:var(--muted); font-size:12px;">Varela, Thompson, Rosch</span></td>
+            <td style="padding:8px 6px; vertical-align:top;">C1 · 4E cognition</td>
+            <td style="padding:8px 6px; vertical-align:top;">#1 central del cluster + betweenness máxima del grafo (0,118)</td>
+            <td style="padding:8px 6px; vertical-align:top;"><strong>#1 SS = 0,989</strong>, percentiles ≥ 0,83 en las 5 dimensiones</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 6px; vertical-align:top;">2</td>
+            <td style="padding:8px 6px; vertical-align:top;"><a href="#" onclick="openDetail(57); return false;"><strong>Teoría de la información integrada</strong></a><br><span style="color:var(--muted); font-size:12px;">Tononi, Koch</span></td>
+            <td style="padding:8px 6px; vertical-align:top;">C6 · Neurociencia empírica</td>
+            <td style="padding:8px 6px; vertical-align:top;">#2 central + betweenness 0,105, único embajador externo de la neurociencia</td>
+            <td style="padding:8px 6px; vertical-align:top;"><strong>#5 SS = 0,965</strong>, top 1 en SI, top 2 en SC y SDU</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 6px; vertical-align:top;">3</td>
+            <td style="padding:8px 6px; vertical-align:top;"><a href="#" onclick="openDetail(106); return false;"><strong>Cognitivismo computacional</strong></a><br><span style="color:var(--muted); font-size:12px;">Miller, Bruner, Simon, Neisser</span></td>
+            <td style="padding:8px 6px; vertical-align:top;">C2 · Funcionalismo computacional</td>
+            <td style="padding:8px 6px; vertical-align:top;">#3 central + puente a C1 y C4</td>
+            <td style="padding:8px 6px; vertical-align:top;"><strong>#4 SS = 0,968</strong>, top en SI y STD, sólido en todo</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 6px; vertical-align:top;">4</td>
+            <td style="padding:8px 6px; vertical-align:top;"><a href="#" onclick="openDetail(147); return false;"><strong>Cosmovisión vedanta advaita</strong></a><br><span style="color:var(--muted); font-size:12px;">Adi Shankara</span></td>
+            <td style="padding:8px 6px; vertical-align:top;">C3 · Tradiciones contemplativas</td>
+            <td style="padding:8px 6px; vertical-align:top;">#1 central por mucho margen + único nodo que abre el cluster con masa crítica</td>
+            <td style="padding:8px 6px; vertical-align:top;"><strong>#2 SS = 0,974</strong>, top 1 en SPH y SDU</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 6px; vertical-align:top;">5</td>
+            <td style="padding:8px 6px; vertical-align:top;"><a href="#" onclick="openDetail(117); return false;"><strong>Constructivismo social del yo</strong></a><br><span style="color:var(--muted); font-size:12px;">Mead, Cooley, Gergen</span></td>
+            <td style="padding:8px 6px; vertical-align:top;">C5 · Consciencia sociocultural</td>
+            <td style="padding:8px 6px; vertical-align:top;">Empatado en lo más central + único nodo de C5 con proyección externa</td>
+            <td style="padding:8px 6px; vertical-align:top;">#43 SS = 0,831 (mejor de su cluster por mucho; el resto cae al puesto 91-218)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Las cuatro primeras son embajadoras "naturales": dominan su cluster Y aparecen en el top 5 del Score Sintético. <em>Constructivismo social del yo</em> es la excepción — su cluster (C5) es estructuralmente endógeno, así que ningún miembro suyo entra al SS top 20. Pero entre los nodos de C5, <em>Constructivismo</em> es el menos endogámico: el único con percentiles altos en STD (0,98), SDU (0,72) y SPH (0,69). Por eso es la mejor opción posible para "abrir" el cluster sociocultural sin sacrificar perfil global.</p>
+
+      <h3 style="margin-top:32px;">Cobertura del grafo</h3>
+      <p>Las 5 teorías, mediante caminos cortos en el grafo de conexiones, alcanzan:</p>
+      <table style="width:100%; max-width:540px; border-collapse:collapse; margin: 12px 0 24px; font-size:14px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border); text-align:left;">
+            <th style="padding:8px 6px;">Distancia desde alguna embajadora</th>
+            <th style="padding:8px 6px;">Cobertura</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);">
+            <td style="padding:8px 6px;"><strong>1 paso</strong> (vecinas directas)</td>
+            <td style="padding:8px 6px;"><strong>108 / 222 = 48,6%</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:8px 6px;"><strong>≤2 pasos</strong> (vecinas y vecinas de vecinas)</td>
+            <td style="padding:8px 6px;"><strong>214 / 222 = 96,4%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>El segundo salto duplica casi exactamente la cobertura: refleja que el catálogo tiene una topología <em>small-world</em> en la que cada teoría central enlaza a 20-30 vecinas directas, pero a través de ellas se accede a una porción enorme del corpus en un salto adicional.</p>
+
+      <h3 style="margin-top:24px;">Cobertura por cluster</h3>
+      <table style="width:100%; max-width:680px; border-collapse:collapse; margin: 12px 0 24px; font-size:14px;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--border); text-align:left;">
+            <th style="padding:8px 6px;">Cluster</th>
+            <th style="padding:8px 6px;">Tamaño</th>
+            <th style="padding:8px 6px;">1 paso</th>
+            <th style="padding:8px 6px;">2 pasos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C1 4E cognition</td><td style="padding:7px 6px;">48</td><td style="padding:7px 6px;">60,4%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C2 Funcionalismo computacional</td><td style="padding:7px 6px;">44</td><td style="padding:7px 6px;">56,8%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C3 Tradiciones contemplativas</td><td style="padding:7px 6px;">39</td><td style="padding:7px 6px;">43,6%</td><td style="padding:7px 6px;">97,4%</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C4 Metafísica idealista/cuántica</td><td style="padding:7px 6px;">34</td><td style="padding:7px 6px;">50,0%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C5 Consciencia sociocultural</td><td style="padding:7px 6px;">25</td><td style="padding:7px 6px;">40,0%</td><td style="padding:7px 6px;">96,0%</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C6 Neurociencia empírica</td><td style="padding:7px 6px;">17</td><td style="padding:7px 6px;">52,9%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr><td style="padding:7px 6px;">C7 Cosmovisiones indígenas</td><td style="padding:7px 6px;">15</td><td style="padding:7px 6px;">6,7%</td><td style="padding:7px 6px;">60,0%</td></tr>
+        </tbody>
+      </table>
+      <p>En 2 pasos cuatro clusters quedan totalmente cubiertos (C1, C2, C4 y C6 = 143 teorías = 64% del catálogo). C3 y C5 se cubren al 96-97% gracias a Vedanta y Constructivismo. C7 (cosmovisiones indígenas) llega al 60% como bonus residual: la <em>Hipótesis de Gaia</em> y otras teorías biológico-ecológicas le hacen de bisagra desde las otras embajadoras. Solo 8 teorías de las 222 quedan completamente fuera de alcance — y la mayoría son cosmovisiones indígenas culturalmente disjuntas del eje occidental-académico.</p>
+
+      <h3 style="margin-top:32px;">Por qué esta es la mejor combinación</h3>
+      <ul>
+        <li><strong>Mínima:</strong> 5 teorías cubren el 96,4% del catálogo en 2 pasos.</li>
+        <li><strong>Equilibrada disciplinariamente:</strong> una por cluster en los cinco clusters mayores del corpus académico (C1, C2, C3, C4 y C5).</li>
+        <li><strong>Equilibrada temporalmente:</strong> una de la antigüedad (Vedanta, s. VIII), una del s. XIX-XX (Constructivismo), tres del s. XX-XXI (Enactivismo, IIT, Cognitivismo).</li>
+        <li><strong>Equilibrada geográficamente:</strong> 2 de Norteamérica (IIT, Cognitivismo), 1 transatlántica (Enactivismo, USA-Chile), 1 de la India (Vedanta), 1 europea-norteamericana (Constructivismo).</li>
+        <li><strong>Robusta a múltiples criterios:</strong> surgen del cruce de tres análisis independientes (clusters por estructura del grafo, Score Sintético por perfil multi-dimensional, cobertura óptima por alcance en 2 pasos). La convergencia de los tres da confianza estadística.</li>
+      </ul>
+
+      <p style="margin-top:20px;">Una "biblioteca mínima" muy equilibrada del pensamiento sobre la consciencia: tres teorías del debate cognitivo-neurocientífico contemporáneo, una tradición milenaria que abre el universo contemplativo, y una teoría de las ciencias sociales que abre el universo construccionista. Estos cinco nombres permiten orientarse en prácticamente cualquier debate del catálogo.</p>
+    </div>
     <div id="viewInfo" style="display:none;" class="info-view">
       <h2>Acerca de esta enciclopedia</h2>
       <p>
@@ -2256,6 +2368,7 @@ function updateViewDisplay() {
   document.getElementById("viewMap").style.display = (state.view === "map") ? "" : "none";
   document.getElementById("viewInfo").style.display = (state.view === "info") ? "" : "none";
   document.getElementById("viewClusters").style.display = (state.view === "clusters") ? "" : "none";
+  document.getElementById("viewConclusiones").style.display = (state.view === "conclusiones") ? "" : "none";
   ["sintetico","integracion","transversalidad","cobertura","persistencia","difusion"].forEach(k => {
     const cap = k.charAt(0).toUpperCase() + k.slice(1);
     const n = document.getElementById("viewScore" + cap);
