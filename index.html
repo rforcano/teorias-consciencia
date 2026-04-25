@@ -539,8 +539,8 @@ main.content {
   white-space: nowrap;
 }
 .score-entry-meta {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 4px 18px;
   font-family: 'Inter', sans-serif;
   font-size: 13px;
@@ -1094,11 +1094,11 @@ main.content {
 
     <div id="viewScoreSintetico" style="display:none;" class="info-view score-view">
       <h2>Score Sintético (SS)</h2>
-      <p><strong>Objetivo.</strong> Agregar en un solo indicador los cinco scores posteriores para identificar las teorías con mayor relevancia en el corpus, entendida como «ser fuerte en varias dimensiones simultáneamente» (centralidad, cobertura, transversalidad, persistencia histórica o difusión universal).</p>
+      <p><strong>Objetivo.</strong> Agregar en un solo indicador los cinco scores individuales para identificar las teorías con mayor relevancia en el corpus, entendida como «ser fuerte en varias dimensiones simultáneamente» (centralidad, cobertura, transversalidad, persistencia histórica o difusión universal).</p>
       <p><strong>Metodología.</strong> Para cada teoría y cada uno de los cinco scores se calcula su percentil dentro del ranking correspondiente (0 = la peor, 1 = la mejor), convirtiendo puntuaciones con escalas distintas a un espacio comparable. Después, para cada teoría se toma la media de sus <strong>tres percentiles más altos</strong> (top-3 mean):</p>
       <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SS<sub>i</sub> = (1/3)·Σ de los 3 percentiles más altos de {P<sub>SI</sub>, P<sub>SC</sub>, P<sub>STD</sub>, P<sub>SPH</sub>, P<sub>SDU</sub>}</p>
       <p>Esta elección prioriza la <em>relevancia por múltiples razones</em> sobre la solidez uniforme. Una teoría fundamental en su campo puede tener una dimensión débil (p. ej. una teoría contemporánea influyente como la información integrada de Tononi, con baja persistencia histórica por ser del siglo XXI) sin que eso la desaloje del top. Solo las dos dimensiones más flojas se ignoran; las tres mejores deben ser altas. El SS es interpretable como «percentil promedio en las tres dimensiones donde esta teoría destaca».</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por SS</h3>
+      <h3 style="margin-top:32px;">Top 10 de teorías por Score Sintético</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
@@ -1271,9 +1271,8 @@ main.content {
     </div>
       </div>
       <h3>Lectura del top 10</h3>
-      <p>El ranking del Score Sintético revela las teorías que se pueden considerar más relevantes del corpus por ser importantes desde varios ángulos a la vez. El <em>enactivismo</em> lidera con un SS casi perfecto (0,989) porque articula simultáneamente filosofía de la mente, ciencia cognitiva, fenomenología y biología latinoamericana, con percentiles ≥ 0,83 en las cinco dimensiones. A continuación aparecen la <em>cosmovisión vedanta advaita</em> (0,974) y el <em>anātman budista</em> (0,973), dos tradiciones antiguas que ocupan el tope en persistencia y difusión universal aunque floreen bajo en transversalidad disciplinar; el top-3 mean las protege de esa debilidad específica.</p>
+      <p>El ranking del Score Sintético revela las teorías que se pueden considerar más relevantes del corpus por ser importantes desde varios ángulos a la vez. El <em>enactivismo</em> lidera con un SS casi perfecto (0,989) porque articula simultáneamente filosofía de la mente, ciencia cognitiva, fenomenología y biología latinoamericana, con percentiles ≥ 0,83 en las cinco dimensiones. A continuación aparecen la <em>cosmovisión vedanta advaita</em> (0,974) y el <em>anātman budista</em> (0,973), dos tradiciones antiguas muy fuertes en persistencia y difusión universal pero más débiles en transversalidad disciplinar.</p>
       <p>El top 10 combina tradiciones milenarias con propuestas contemporáneas fundacionales. De la neurociencia y filosofía de la mente actuales aparecen la <em>IIT</em> (puesto 5), la <em>hipótesis de Gaia</em> (6), el <em>cosmopsiquismo</em> (8) y el <em>procesamiento predictivo</em> (10); del pensamiento clásico entran el <em>pragmatismo de James</em> (7) y el <em>taoísmo y wu wei</em> (9). La presencia conjunta de IIT y vedanta advaita, o de cosmopsiquismo y anātman budista, ilustra precisamente por qué este ranking es interesante: son teorías que se relacionan conceptualmente aunque vengan de tradiciones opuestas.</p>
-      <p>El SS elige relevancia sobre equilibrio. Una teoría como la <em>fenomenología de la encarnación</em> (puesto 15, SS=0,906) con un STD muy alto pero un SC bajo o una <em>IIT</em> con SPH bajo por ser del s. XXI pero SI casi perfecto, mantienen su sitio porque brillan en tres dimensiones. El top-3 mean subraya la idea de que una teoría puede ser central para el catálogo por razones distintas a «ser sólida en todo».</p>
     </div>
 
     <div id="viewScoreIntegracion" style="display:none;" class="info-view score-view">
@@ -1282,7 +1281,7 @@ main.content {
       <p><strong>Metodología.</strong> Se construye el grafo de 222 teorías con sus conexiones (influencias, herencias, críticas) y se calculan cuatro centralidades clásicas para cada nodo: grado (número de vecinos), intermediación (<em>betweenness</em>), vector propio (<em>eigenvector</em>) y cercanía (<em>closeness</em>). Cada métrica se normaliza al rango [0,1] por min-max y se combinan linealmente con pesos fijos:</p>
 <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SI = 0,2·grado + 0,3·intermediación + 0,3·vector propio + 0,2·cercanía</p>
 <p>Los pesos reflejan un equilibrio entre tres dimensiones: presencia local (grado), papel de puente (intermediación y cercanía) y prestigio acumulado por estar conectado a nodos prestigiosos (vector propio).</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por SI</h3>
+      <h3 style="margin-top:32px;">Top 10 de teorías por Score de Integración</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
@@ -1457,7 +1456,7 @@ main.content {
 <p style="padding-left:20px;"><strong>1. Porcentaje de conexiones fuera de disciplina</strong>: proporción de vecinos cuya disciplina no coincide con la de <em>i</em>.<br><strong>2. Diversidad disciplinar</strong>: entropía de Shannon sobre las disciplinas de los vecinos, normalizada por log<sub>2</sub>(12) (hay K=12 disciplinas en el catálogo).</p>
 <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">STD = 0,5·(% fuera disciplina) + 0,5·(diversidad disciplinar)</p>
 <p>El primer término premia estar fuera del propio silo; el segundo penaliza concentrarse en una sola disciplina ajena, premiando en cambio el reparto equitativo entre varias. Las teorías con menos de dos conexiones reciben STD=0 por convención.</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por STD</h3>
+      <h3 style="margin-top:32px;">Top 10 de teorías por Score de Transversalidad Disciplinar</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
@@ -1632,7 +1631,7 @@ main.content {
 <p style="padding-left:20px;"><strong>Cobertura bruta en 2 pasos</strong>: |R<sub>≤2</sub>(v)| / (N−1), fracción del catálogo alcanzable.<br><strong>Cobertura única</strong>: |R<sub>≤2</sub>(v)| / Σ grados de los vecinos de <em>v</em>, que penaliza la redundancia (varios caminos hacia los mismos nodos).</p>
 <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SC = 0,6·cobertura bruta + 0,4·cobertura única</p>
 <p>Una teoría con muchos vecinos pero todos dentro del mismo clúster obtiene cobertura bruta alta pero cobertura única baja; la combinación favorece a las teorías que conectan a muchas otras sin solapamientos excesivos.</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por SC</h3>
+      <h3 style="margin-top:32px;">Top 10 de teorías por Score de Cobertura</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
@@ -1806,7 +1805,7 @@ main.content {
       <p><strong>Metodología.</strong> El catálogo se divide en T=7 épocas (antigüedad, medieval, moderno temprano, s. XIX, primera mitad del s. XX, segunda mitad del s. XX, s. XXI). Para cada época <em>t</em> se construye el subgrafo acumulativo G<sub>t</sub>: las teorías aparecidas hasta esa época junto con sus aristas mutuas. Dentro de cada G<sub>t</sub> se calcula el SI de cada teoría presente y se convierte en percentil, obteniendo I<sub>it</sub> ∈ [0,1]. A<sub>it</sub>=1 si la teoría <em>i</em> existe en G<sub>t</sub>, si no, 0.</p>
 <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SPH<sub>i</sub> = (1/T) · Σ<sub>t</sub> A<sub>it</sub>·I<sub>it</sub></p>
 <p>El promedio se divide por T=7 (no por el número de épocas donde la teoría está presente), lo que penaliza la aparición tardía: una teoría nacida en el s. XXI aporta 0 en las seis épocas anteriores, por muy importante que sea hoy. Favorece así a las teorías verdaderamente antiguas <em>que además</em> han seguido siendo relevantes.</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por SPH</h3>
+      <h3 style="margin-top:32px;">Top 10 de teorías por Score de Persistencia Histórica</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
@@ -1980,7 +1979,7 @@ main.content {
       <p><strong>Metodología.</strong> Se consideran R=9 regiones culturales (Europa, Norteamérica, Latinoamérica, África y Oriente Medio, India/Sur de Asia, Asia oriental, Sudeste asiático, Oceanía/aborigen, Mundo clásico grecorromano). Para cada región <em>r</em> se construye el subgrafo G<sub>r</sub> con las teorías presentes en <em>r</em>: una teoría está presente si su región de origen es <em>r</em> o si tiene al menos una conexión con una teoría originada en <em>r</em>. Dentro de G<sub>r</sub> se calcula el percentil de SI de cada teoría presente, I<sub>ir</sub>. A<sub>ir</sub>=1 si está presente, 0 si no.</p>
 <p style="text-align:center; font-family: 'Source Serif Pro', Georgia, serif; font-style:italic;">SDU<sub>i</sub> = (1/R) · Σ<sub>r</sub> A<sub>ir</sub>·I<sub>ir</sub></p>
 <p>Como en el SPH, se divide por R=9 (no por el número de regiones donde está presente): una teoría localizada culturalmente, por muy central que sea en su región, nunca alcanza valores altos. Favorece a las teorías realmente itinerantes.</p>
-      <h3 style="margin-top:32px;">Top 10 de teorías por SDU</h3>
+      <h3 style="margin-top:32px;">Top 10 de teorías por Score de Difusión Universal</h3>
       <div class="score-top10">
     <div class="score-entry">
       <div class="score-entry-header">
