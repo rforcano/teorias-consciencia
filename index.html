@@ -932,22 +932,22 @@ main.content {
       <table style="width:100%; max-width:540px; border-collapse:collapse; margin: 12px 0 24px; font-size:14px;">
         <thead>
           <tr style="border-bottom:2px solid var(--border); text-align:left;">
-            <th style="padding:8px 6px;">Distancia desde alguna embajadora</th>
+            <th style="padding:8px 6px;">Distancia</th>
             <th style="padding:8px 6px;">Cobertura</th>
           </tr>
         </thead>
         <tbody>
           <tr style="border-bottom:1px solid var(--border);">
             <td style="padding:8px 6px;"><strong>1 paso</strong> (vecinas directas)</td>
-            <td style="padding:8px 6px;"><strong>108 / 222 = 48,6%</strong></td>
+            <td style="padding:8px 6px;">108 / 222 = <strong>48,6%</strong></td>
           </tr>
           <tr>
-            <td style="padding:8px 6px;"><strong>≤2 pasos</strong> (vecinas y vecinas de vecinas)</td>
-            <td style="padding:8px 6px;"><strong>214 / 222 = 96,4%</strong></td>
+            <td style="padding:8px 6px;"><strong>2 pasos</strong> (vecinas y vecinas de vecinas)</td>
+            <td style="padding:8px 6px;">214 / 222 = <strong>96,4%</strong></td>
           </tr>
         </tbody>
       </table>
-      <p>El segundo salto duplica casi exactamente la cobertura: refleja que el catálogo tiene una topología <em>small-world</em> en la que cada teoría central enlaza a 20-30 vecinas directas, pero a través de ellas se accede a una porción enorme del corpus en un salto adicional.</p>
+      <p>El segundo salto duplica la cobertura: refleja que el catálogo tiene una topología <em>small-world</em> en la que cada teoría central enlaza a 20-30 vecinas directas, pero a través de ellas se accede a casi la totalidad del corpus en un salto adicional.</p>
 
       <h3 style="margin-top:24px;">Cobertura por cluster</h3>
       <table style="width:100%; max-width:680px; border-collapse:collapse; margin: 12px 0 24px; font-size:14px;">
@@ -960,18 +960,18 @@ main.content {
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C1 4E cognition</td><td style="padding:7px 6px;">48</td><td style="padding:7px 6px;">60,4%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C2 Funcionalismo computacional</td><td style="padding:7px 6px;">44</td><td style="padding:7px 6px;">56,8%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C1 4E cognition</td><td style="padding:7px 6px;">48</td><td style="padding:7px 6px;">60,4%</td><td style="padding:7px 6px;">100%</td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C2 Funcionalismo computacional</td><td style="padding:7px 6px;">44</td><td style="padding:7px 6px;">56,8%</td><td style="padding:7px 6px;">100%</td></tr>
           <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C3 Tradiciones contemplativas</td><td style="padding:7px 6px;">39</td><td style="padding:7px 6px;">43,6%</td><td style="padding:7px 6px;">97,4%</td></tr>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C4 Metafísica idealista/cuántica</td><td style="padding:7px 6px;">34</td><td style="padding:7px 6px;">50,0%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C4 Metafísica idealista/cuántica</td><td style="padding:7px 6px;">34</td><td style="padding:7px 6px;">50,0%</td><td style="padding:7px 6px;">100%</td></tr>
           <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C5 Consciencia sociocultural</td><td style="padding:7px 6px;">25</td><td style="padding:7px 6px;">40,0%</td><td style="padding:7px 6px;">96,0%</td></tr>
-          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C6 Neurociencia empírica</td><td style="padding:7px 6px;">17</td><td style="padding:7px 6px;">52,9%</td><td style="padding:7px 6px;"><strong>100%</strong></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:7px 6px;">C6 Neurociencia empírica</td><td style="padding:7px 6px;">17</td><td style="padding:7px 6px;">52,9%</td><td style="padding:7px 6px;">100%</td></tr>
           <tr><td style="padding:7px 6px;">C7 Cosmovisiones indígenas</td><td style="padding:7px 6px;">15</td><td style="padding:7px 6px;">6,7%</td><td style="padding:7px 6px;">60,0%</td></tr>
         </tbody>
       </table>
       <p>En 2 pasos cuatro clusters quedan totalmente cubiertos (C1, C2, C4 y C6 = 143 teorías = 64% del catálogo). C3 y C5 se cubren al 96-97% gracias a Vedanta y Constructivismo. C7 (cosmovisiones indígenas) llega al 60% como bonus residual: la <em>Hipótesis de Gaia</em> y otras teorías biológico-ecológicas le hacen de bisagra desde las otras embajadoras. Solo 8 teorías de las 222 quedan completamente fuera de alcance — y la mayoría son cosmovisiones indígenas culturalmente disjuntas del eje occidental-académico.</p>
 
-      <h3 style="margin-top:32px;">Por qué esta es la mejor combinación</h3>
+      <h3 style="margin-top:32px;">Por qué esta es la mejor combinación de teorías</h3>
       <ul>
         <li><strong>Mínima:</strong> 5 teorías cubren el 96,4% del catálogo en 2 pasos.</li>
         <li><strong>Equilibrada disciplinariamente:</strong> una por cluster en los cinco clusters mayores del corpus académico (C1, C2, C3, C4 y C5).</li>
@@ -980,7 +980,8 @@ main.content {
         <li><strong>Robusta a múltiples criterios:</strong> surgen del cruce de tres análisis independientes (clusters por estructura del grafo, Score Sintético por perfil multi-dimensional, cobertura óptima por alcance en 2 pasos). La convergencia de los tres da confianza estadística.</li>
       </ul>
 
-      <p style="margin-top:20px;">Una "biblioteca mínima" muy equilibrada del pensamiento sobre la consciencia: tres teorías del debate cognitivo-neurocientífico contemporáneo, una tradición milenaria que abre el universo contemplativo, y una teoría de las ciencias sociales que abre el universo construccionista. Estos cinco nombres permiten orientarse en prácticamente cualquier debate del catálogo.</p>
+      <h3 style="margin-top:32px;">CONCLUSIÓN</h3>
+      <p style="margin-top:20px;"><strong>Estas 5 teorías constituyen una "biblioteca mínima" muy equilibrada del pensamiento sobre la consciencia: tres teorías del debate cognitivo-neurocientífico contemporáneo, una tradición milenaria que abre el universo contemplativo, y una teoría de las ciencias sociales que abre el universo construccionista. Estos cinco nombres permiten abrir prácticamente cualquier debate del catálogo.</strong></p>
     </div>
     <div id="viewInfo" style="display:none;" class="info-view">
       <h2>Acerca de esta enciclopedia</h2>
