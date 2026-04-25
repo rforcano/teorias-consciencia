@@ -601,7 +601,7 @@ main.content {
     </div>
     <div class="header-stats">
       <div><strong id="statTotal">—</strong> teorías catalogadas</div>
-      <div><strong id="statDisc">—</strong> disciplinas &middot; <strong id="statReg">—</strong> regiones</div>
+      <div><strong id="statDisc">—</strong> disciplinas &middot; <strong id="statEpoca">—</strong> épocas &middot; <strong id="statReg">—</strong> regiones</div>
     </div>
   </div>
 </header>
@@ -2465,6 +2465,7 @@ function render() {
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("statTotal").textContent = THEORIES.length;
   document.getElementById("statDisc").textContent = new Set(THEORIES.map(t => t.disciplina)).size;
+  document.getElementById("statEpoca").textContent = new Set(THEORIES.map(t => t.epoca)).size;
   document.getElementById("statReg").textContent = new Set(THEORIES.map(t => t.region)).size;
   buildFilter("disciplina", DISCIPLINAS, document.getElementById("filterDisciplina"));
   buildFilter("epoca", EPOCAS, document.getElementById("filterEpoca"));
