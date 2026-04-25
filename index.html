@@ -557,6 +557,37 @@ main.content {
 .score-entry-link a { color: var(--accent, #8a6d3b); text-decoration: none; }
 .score-entry-link a:hover { text-decoration: underline; }
 
+
+/* === Two-level tab navigation === */
+.view-subtabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: -14px;
+  margin-bottom: 22px;
+  padding: 4px 0 0 8px;
+  border-bottom: 1px solid var(--border);
+}
+.view-subtab {
+  background: none;
+  border: none;
+  padding: 7px 13px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+  line-height: 1.2;
+}
+.view-subtab:hover { color: var(--ink); }
+.view-subtab.subactive {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 </style>
 </head>
 <body>
@@ -609,13 +640,17 @@ main.content {
     <div class="view-tabs">
       <button class="view-tab active" data-view="list">LISTADO</button>
       <button class="view-tab" data-view="map">MAPA DE CONEXIONES</button>
-      <button class="view-tab" data-view="score-sintetico">SCORE SINTÉTICO</button>
-      <button class="view-tab" data-view="score-integracion">1. Score de Integración</button>
-      <button class="view-tab" data-view="score-cobertura">2.&nbsp;Score de&nbsp;Cobertura</button>
-      <button class="view-tab" data-view="score-transversalidad">3. Score de Transversalidad Disciplinar</button>
-      <button class="view-tab" data-view="score-persistencia">4. Score de Persistencia Histórica</button>
-      <button class="view-tab" data-view="score-difusion">5. Score de Difusión Universal</button>
+      <button class="view-tab" data-top="scores">SCORE DE RELEVANCIA</button>
+      <button class="view-tab" data-view="clusters">CLUSTERS EMERGENTES</button>
       <button class="view-tab" data-view="info">Acerca de</button>
+    </div>
+    <div class="view-subtabs" id="scoreSubtabs" style="display:none;">
+      <button class="view-subtab" data-view="score-sintetico">Score Sintético</button>
+      <button class="view-subtab" data-view="score-integracion">1.&nbsp;Score de Integración</button>
+      <button class="view-subtab" data-view="score-cobertura">2.&nbsp;Score de&nbsp;Cobertura</button>
+      <button class="view-subtab" data-view="score-transversalidad">3.&nbsp;Score de Transversalidad Disciplinar</button>
+      <button class="view-subtab" data-view="score-persistencia">4.&nbsp;Score de Persistencia Histórica</button>
+      <button class="view-subtab" data-view="score-difusion">5.&nbsp;Score de Difusión Universal</button>
     </div>
 
     <div id="viewList">
@@ -646,6 +681,191 @@ main.content {
           <div id="legendContent"></div>
         </div>
       </div>
+    </div>
+
+    <div id="viewClusters" style="display:none;" class="info-view score-view">
+      <h2>Clusters emergentes del grafo</h2>
+      <p><strong>Objetivo.</strong> Identificar las grandes familias o corrientes de pensamiento sobre la consciencia tal como emergen de la propia estructura de conexiones del catálogo, sin imponer una clasificación a priori por disciplina o por época. Es un análisis complementario al de los cinco scores: en lugar de medir, agrupa.</p>
+      <p><strong>Metodología.</strong> Se aplica el algoritmo <em>Louvain</em> sobre el grafo no dirigido de las 222 teorías y sus 864 conexiones. Louvain busca la partición que maximiza la <strong>modularidad</strong>, una métrica que captura cuándo un agrupamiento es real (los nodos de un mismo grupo están más conectados entre sí de lo esperable por azar). Con resolución 1.0 emergen <strong>7 clusters</strong> con <strong>modularidad 0.561</strong> (>0.4 ya se considera una partición fuerte).</p>
+      <p>Los clusters tienen identidad temática muy clara y no son artefactos algorítmicos. Cada uno se caracteriza por su perfil disciplinar/temporal/geográfico, sus teorías más centrales (las más conectadas dentro del cluster) y sus teorías puente (las que conectan con los demás clusters mediante alta intermediación).</p>
+
+      <h3 style="margin-top:32px;">Visualización del grafo coloreado por cluster</h3>
+      <div style="text-align:center; margin: 16px 0;">
+        <img src="grafo_clusters.png" alt="Grafo de 222 teorías coloreado por cluster" style="max-width:100%; height:auto; border:1px solid var(--border); border-radius:4px;">
+      </div>
+      <p style="font-size:12px; color:var(--muted); text-align:center; margin-top:-8px;">Layout Kamada-Kawai · nodos dimensionados por grado · solo las 4 teorías más centrales por cluster están etiquetadas</p>
+
+      <h3 style="margin-top:32px;">Los 7 clusters</h3>
+
+    <div class="cluster-block" style="border-left: 4px solid #E63946; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#E63946;">C1 — Cognición encarnada y enactiva <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 48 teorías · 4E cognition · el centro estructural del grafo</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Neurociencia (11) · Filosofía (9) · Ciencias cognitivas (8) · Biología (7)<br><strong>Épocas:</strong> Segunda mitad siglo XX (19) · Siglo XXI (15) · Primera mitad siglo XX (9)<br><strong>Regiones:</strong> Europa (29) · Norteamérica (12) · Latinoamérica (3)<br><strong>Aristas hacia otros clusters:</strong> 94</p>
+      <p style="margin:8px 0;">El cluster <strong>más grande y más central del grafo</strong>. Reúne la herencia fenomenológica europea (Husserl → Merleau-Ponty → Varela) y la traduce en clave cognitiva contemporánea (cognición situada, mente extendida, enactivismo, procesamiento predictivo). Es el hub que articula filosofía continental, ciencia cognitiva experimental y biología de sistemas. Que el enactivismo tenga la betweenness más alta del grafo no es casualidad: esta tradición está literalmente diseñada para ser puente entre culturas epistémicas.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(31); return false;">Enactivismo</a> <span style="color:var(--muted); font-size:13px;">— Francisco Varela, Evan Thompson, Eleanor Rosch</span> <span style="color:var(--muted); font-size:12px;">grado interno 23 · externo 7</span></li>
+        <li><a href="#" onclick="openDetail(220); return false;">Fenomenología de la encarnación</a> <span style="color:var(--muted); font-size:13px;">— Maurice Merleau-Ponty</span> <span style="color:var(--muted); font-size:12px;">grado interno 13 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(32); return false;">Cognición encarnada</a> <span style="color:var(--muted); font-size:13px;">— George Lakoff, Mark Johnson, Antonio Damasio (precursores)</span> <span style="color:var(--muted); font-size:12px;">grado interno 12 · externo 2</span></li>
+        <li><a href="#" onclick="openDetail(30); return false;">Mentes extendidas</a> <span style="color:var(--muted); font-size:13px;">— Andy Clark, David Chalmers</span> <span style="color:var(--muted); font-size:12px;">grado interno 10 · externo 1</span></li>
+        <li><a href="#" onclick="openDetail(38); return false;">Procesamiento predictivo</a> <span style="color:var(--muted); font-size:13px;">— Karl Friston, Andy Clark, Jakob Hohwy</span> <span style="color:var(--muted); font-size:12px;">grado interno 10 · externo 11</span></li>
+        <li><a href="#" onclick="openDetail(33); return false;">Cognición situada</a> <span style="color:var(--muted); font-size:13px;">— Lucy Suchman, James Greeno</span> <span style="color:var(--muted); font-size:12px;">grado interno 9 · externo 2</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(38); return false;">Procesamiento predictivo</a> <span style="color:var(--muted); font-size:13px;">— Karl Friston, Andy Clark, Jakob Hohwy</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.069 · proyecta a C2×5, C3×3, C5×1, C4×1, C6×1</span></li>
+        <li><a href="#" onclick="openDetail(31); return false;">Enactivismo</a> <span style="color:var(--muted); font-size:13px;">— Francisco Varela, Evan Thompson, Eleanor Rosch</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.118 · proyecta a C3×3, C2×2, C4×2</span></li>
+        <li><a href="#" onclick="openDetail(146); return false;">Inteligencia colectiva y consciencia social</a> <span style="color:var(--muted); font-size:13px;">— Pierre Lévy, Kevin Kelly, Douglas Engelbart</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.018 · proyecta a C7×2, C5×2, C2×1</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster-block" style="border-left: 4px solid #457B9D; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#457B9D;">C2 — Funcionalismo computacional y filosofía analítica <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 44 teorías · el eje atlántico-analítico</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Filosofía (19) · Computación/IA (15) · Neurociencia (4) · Ciencias cognitivas (3)<br><strong>Épocas:</strong> Segunda mitad siglo XX (23) · Siglo XXI (14) · Primera mitad siglo XX (4)<br><strong>Regiones:</strong> Norteamérica (28) · Europa (10) · Oceanía / aborigen (4)<br><strong>Aristas hacia otros clusters:</strong> 87</p>
+      <p style="margin:8px 0;">El cluster atlántico-analítico por antonomasia. Articula la tradición anglosajona de filosofía de la mente (Putnam, Fodor, Block, Dennett, Chalmers) con el cognitivismo computacional y la inteligencia artificial. Su adherencia al eje Norteamérica + Segunda mitad del siglo XX refleja la historia real de su formación. Se separa del C1 por una diferencia profunda: aquí la mente es computación de representaciones, allí es acoplamiento encarnado con un mundo.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(15); return false;">Funcionalismo</a> <span style="color:var(--muted); font-size:13px;">— Hilary Putnam, Jerry Fodor</span> <span style="color:var(--muted); font-size:12px;">grado interno 17 · externo 4</span></li>
+        <li><a href="#" onclick="openDetail(55); return false;">Teoría del espacio de trabajo global</a> <span style="color:var(--muted); font-size:13px;">— Bernard Baars</span> <span style="color:var(--muted); font-size:12px;">grado interno 16 · externo 8</span></li>
+        <li><a href="#" onclick="openDetail(106); return false;">Cognitivismo computacional</a> <span style="color:var(--muted); font-size:13px;">— George Miller, Jerome Bruner, Ulric Neisser, Herbert Simon</span> <span style="color:var(--muted); font-size:12px;">grado interno 16 · externo 8</span></li>
+        <li><a href="#" onclick="openDetail(140); return false;">Funcionalismo de máquina de Turing</a> <span style="color:var(--muted); font-size:13px;">— Hilary Putnam (temprano), Ned Block</span> <span style="color:var(--muted); font-size:12px;">grado interno 13 · externo 1</span></li>
+        <li><a href="#" onclick="openDetail(141); return false;">Consciencia artificial y superinteligencia</a> <span style="color:var(--muted); font-size:13px;">— Nick Bostrom, Stuart Russell, Ilya Sutskever</span> <span style="color:var(--muted); font-size:12px;">grado interno 13 · externo 4</span></li>
+        <li><a href="#" onclick="openDetail(18); return false;">Argumento del zombi filosófico</a> <span style="color:var(--muted); font-size:13px;">— David Chalmers</span> <span style="color:var(--muted); font-size:12px;">grado interno 10 · externo 0</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(106); return false;">Cognitivismo computacional</a> <span style="color:var(--muted); font-size:13px;">— George Miller, Jerome Bruner, Ulric Neisser, Herbert Simon</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.066 · proyecta a C1×5, C4×3</span></li>
+        <li><a href="#" onclick="openDetail(17); return false;">Naturalismo biológico</a> <span style="color:var(--muted); font-size:13px;">— John Searle</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.041 · proyecta a C6×4, C5×2, C1×1</span></li>
+        <li><a href="#" onclick="openDetail(29); return false;">Teoría del centro narrativo de gravedad</a> <span style="color:var(--muted); font-size:13px;">— Daniel Dennett</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.028 · proyecta a C5×6, C3×1, C7×1</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster-block" style="border-left: 4px solid #F4A261; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#F4A261;">C3 — Tradiciones contemplativas y ciencia de la meditación <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 39 teorías · antigüedad y revival contemporáneo</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Espiritualidad (23) · Neurociencia (6) · Psicología (6) · Filosofía (2)<br><strong>Épocas:</strong> Antigüedad (≤500 d.C.) (11) · Siglo XXI (9) · Medieval (500-1500) (7)<br><strong>Regiones:</strong> Europa (12) · Norteamérica (9) · India / Sur de Asia (8)<br><strong>Aristas hacia otros clusters:</strong> 70</p>
+      <p style="margin:8px 0;">Cluster de doble génesis temporal: fusiona tradiciones milenarias (vedanta, mística cristiana, hermetismo, budismo) con su reinterpretación científica contemporánea (meditación clínica, psicodélicos, psicología transpersonal). La distribución bimodal (Antigüedad + siglo XXI, casi nada en medio) refleja que no hay continuidad institucional sino un revival. Ken Wilber actúa como gran sintetizador. El cerebro entrópico y la ciencia de los psicodélicos son las bisagras hacia la neurociencia experimental.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(147); return false;">Cosmovisión vedanta advaita</a> <span style="color:var(--muted); font-size:13px;">— Adi Shankara (sintetizador)</span> <span style="color:var(--muted); font-size:12px;">grado interno 11 · externo 7</span></li>
+        <li><a href="#" onclick="openDetail(120); return false;">Investigación científica de la meditación</a> <span style="color:var(--muted); font-size:13px;">— Antoine Lutz, Richard Davidson, Wolf Singer</span> <span style="color:var(--muted); font-size:12px;">grado interno 10 · externo 2</span></li>
+        <li><a href="#" onclick="openDetail(124); return false;">Psicología transpersonal</a> <span style="color:var(--muted); font-size:13px;">— Stanislav Grof, Charles Tart, Ken Wilber</span> <span style="color:var(--muted); font-size:12px;">grado interno 9 · externo 4</span></li>
+        <li><a href="#" onclick="openDetail(163); return false;">Hermetismo y Mente divina</a> <span style="color:var(--muted); font-size:13px;">— Hermes Trismegisto (atribuido), Ficino</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(165); return false;">Mística cristiana</a> <span style="color:var(--muted); font-size:13px;">— Meister Eckhart, Teresa de Ávila, Juan de la Cruz</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 2</span></li>
+        <li><a href="#" onclick="openDetail(126); return false;">Modelo integral de Wilber</a> <span style="color:var(--muted); font-size:13px;">— Ken Wilber</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 4</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(151); return false;">Anātman budista</a> <span style="color:var(--muted); font-size:13px;">— Buda Śākyamuni, Nāgārjuna, Vasubandhu</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.025 · proyecta a C2×3, C1×2, C4×2</span></li>
+        <li><a href="#" onclick="openDetail(147); return false;">Cosmovisión vedanta advaita</a> <span style="color:var(--muted); font-size:13px;">— Adi Shankara (sintetizador)</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.037 · proyecta a C4×6, C1×1</span></li>
+        <li><a href="#" onclick="openDetail(74); return false;">Cerebro entrópico</a> <span style="color:var(--muted); font-size:13px;">— Robin Carhart-Harris</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.034 · proyecta a C6×3, C1×2</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster-block" style="border-left: 4px solid #2A9D8F; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#2A9D8F;">C4 — Metafísicas idealistas, cuánticas y panpsíquicas <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 34 teorías · la consciencia como propiedad fundamental</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Filosofía (13) · Física (11) · Psicología (3) · Espiritualidad (2)<br><strong>Épocas:</strong> Segunda mitad siglo XX (10) · Siglo XXI (8) · Primera mitad siglo XX (8)<br><strong>Regiones:</strong> Europa (16) · Norteamérica (14) · India / Sur de Asia (2)<br><strong>Aristas hacia otros clusters:</strong> 78</p>
+      <p style="margin:8px 0;">El cluster donde la consciencia es cósmica o fundamental. Agrupa las propuestas que rechazan el emergentismo fisicalista: panpsiquismo (Strawson, Goff, Seager), cosmopsiquismo, idealismo analítico (Kastrup), monismo neutral (Russell, Mach), y, llamativamente, una nutrida representación de interpretaciones de la mecánica cuántica que dan lugar a la observación consciente (Wigner, Bohm, QBism, holográfico). La conexión fuerte con C3 no es casual: comparten el rechazo al materialismo reduccionista.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(22); return false;">Cosmopsiquismo</a> <span style="color:var(--muted); font-size:13px;">— Philip Goff, Yujin Nagasawa, Itay Shani</span> <span style="color:var(--muted); font-size:12px;">grado interno 16 · externo 6</span></li>
+        <li><a href="#" onclick="openDetail(21); return false;">Panpsiquismo contemporáneo</a> <span style="color:var(--muted); font-size:13px;">— Galen Strawson, Philip Goff, William Seager</span> <span style="color:var(--muted); font-size:12px;">grado interno 12 · externo 7</span></li>
+        <li><a href="#" onclick="openDetail(23); return false;">Idealismo analítico</a> <span style="color:var(--muted); font-size:13px;">— Bernardo Kastrup</span> <span style="color:var(--muted); font-size:12px;">grado interno 10 · externo 6</span></li>
+        <li><a href="#" onclick="openDetail(44); return false;">Monismo neutral</a> <span style="color:var(--muted); font-size:13px;">— Bertrand Russell, William James, Ernst Mach</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(84); return false;">Interpretación de Copenhague (Wigner)</a> <span style="color:var(--muted); font-size:13px;">— Eugene Wigner, John von Neumann</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(87); return false;">Teoría holográfica del universo</a> <span style="color:var(--muted); font-size:13px;">— David Bohm, Karl Pribram, Leonard Susskind</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 0</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(25); return false;">Pragmatismo y consciencia stream</a> <span style="color:var(--muted); font-size:13px;">— William James</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.037 · proyecta a C2×2, C3×2, C1×1</span></li>
+        <li><a href="#" onclick="openDetail(21); return false;">Panpsiquismo contemporáneo</a> <span style="color:var(--muted); font-size:13px;">— Galen Strawson, Philip Goff, William Seager</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.051 · proyecta a C1×4, C2×1, C6×1, C3×1</span></li>
+        <li><a href="#" onclick="openDetail(104); return false;">Psicología analítica junguiana</a> <span style="color:var(--muted); font-size:13px;">— Carl Gustav Jung</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.026 · proyecta a C3×5, C5×2</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster-block" style="border-left: 4px solid #9D4EDD; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#9D4EDD;">C5 — Consciencia como construcción sociocultural <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 25 teorías · la consciencia es un efecto social</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Sociología (11) · Psicología (5) · Filosofía (4) · Neurociencia (3)<br><strong>Épocas:</strong> Segunda mitad siglo XX (13) · Primera mitad siglo XX (6) · Siglo XIX (3)<br><strong>Regiones:</strong> Europa (15) · Norteamérica (9) · Asia oriental (1)<br><strong>Aristas hacia otros clusters:</strong> 51</p>
+      <p style="margin:8px 0;">Las teorías que dicen que la consciencia es un efecto social, no una propiedad individual. Marx, Durkheim, Mead, Goffman, Foucault, Adorno, los estudios culturales — el giro sociológico. La presencia sorprendente de la hipótesis bicameral de Jaynes tiene sentido aquí: también trata la consciencia como producto histórico, aunque desde un ángulo psicocultural. El psicoanálisis freudiano es la bisagra más conectada hacia otros territorios.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(191); return false;">Materialismo histórico y consciencia</a> <span style="color:var(--muted); font-size:13px;">— Karl Marx, Friedrich Engels</span> <span style="color:var(--muted); font-size:12px;">grado interno 9 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(117); return false;">Constructivismo social del yo</a> <span style="color:var(--muted); font-size:13px;">— Kenneth Gergen, John Shotter</span> <span style="color:var(--muted); font-size:12px;">grado interno 9 · externo 3</span></li>
+        <li><a href="#" onclick="openDetail(116); return false;">Modelo dramatúrgico del yo</a> <span style="color:var(--muted); font-size:13px;">— Erving Goffman</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 3</span></li>
+        <li><a href="#" onclick="openDetail(194); return false;">Foucault y consciencia como efecto de poder</a> <span style="color:var(--muted); font-size:13px;">— Michel Foucault</span> <span style="color:var(--muted); font-size:12px;">grado interno 7 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(54); return false;">Hipótesis del cerebro bicameral</a> <span style="color:var(--muted); font-size:13px;">— Julian Jaynes</span> <span style="color:var(--muted); font-size:12px;">grado interno 6 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(193); return false;">Escuela de Frankfurt y crítica de la razón instrumental</a> <span style="color:var(--muted); font-size:13px;">— Horkheimer, Adorno, Marcuse</span> <span style="color:var(--muted); font-size:12px;">grado interno 6 · externo 0</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(4); return false;">Idealismo absoluto</a> <span style="color:var(--muted); font-size:13px;">— Georg Wilhelm Friedrich Hegel</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.031 · proyecta a C4×2, C3×2, C1×1</span></li>
+        <li><a href="#" onclick="openDetail(103); return false;">Psicoanálisis freudiano</a> <span style="color:var(--muted); font-size:13px;">— Sigmund Freud</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.021 · proyecta a C4×2, C2×1, C1×1, C7×1</span></li>
+        <li><a href="#" onclick="openDetail(190); return false;">Consciencia colectiva de Durkheim</a> <span style="color:var(--muted); font-size:13px;">— Émile Durkheim</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.017 · proyecta a C2×1, C1×1, C7×1</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster-block" style="border-left: 4px solid #F77F00; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#F77F00;">C6 — Neurociencia empírica estricta <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 17 teorías · el cómo neural de la consciencia</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Neurociencia (15) · Biología (1) · Filosofía (1)<br><strong>Épocas:</strong> Siglo XXI (9) · Segunda mitad siglo XX (8)<br><strong>Regiones:</strong> Norteamérica (10) · Europa (6) · Latinoamérica (1)<br><strong>Aristas hacia otros clusters:</strong> 49</p>
+      <p style="margin:8px 0;">El cluster más disciplinarmente puro del catálogo (15 de 17 son neurociencia). Son las teorías empíricas concretas sobre el cómo neural de la consciencia: oscilaciones gamma, vinculación talamocortical, procesamiento recurrente, NCC, IIT, GWT neuronal. La IIT actúa como embajador hacia afuera: conecta con la filosofía de la mente (C2), el panpsiquismo (C4 — por la tesis fuerte de Tononi) y el 4E (C1). Es un cluster pequeño pero teóricamente muy denso.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(56); return false;">Espacio de trabajo global neuronal (GNW)</a> <span style="color:var(--muted); font-size:13px;">— Stanislas Dehaene, Jean-Pierre Changeux, Lionel Naccache</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 2</span></li>
+        <li><a href="#" onclick="openDetail(57); return false;">Teoría de la información integrada</a> <span style="color:var(--muted); font-size:13px;">— Giulio Tononi, Christof Koch</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 22</span></li>
+        <li><a href="#" onclick="openDetail(66); return false;">Teoría del procesamiento recurrente</a> <span style="color:var(--muted); font-size:13px;">— Victor Lamme</span> <span style="color:var(--muted); font-size:12px;">grado interno 7 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(60); return false;">Teoría del ciclo talamocortical</a> <span style="color:var(--muted); font-size:13px;">— Rodolfo Llinás</span> <span style="color:var(--muted); font-size:12px;">grado interno 7 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(61); return false;">Vinculación por sincronía</a> <span style="color:var(--muted); font-size:13px;">— Wolf Singer, Andreas Engel</span> <span style="color:var(--muted); font-size:12px;">grado interno 7 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(64); return false;">Correlatos neurales de la consciencia</a> <span style="color:var(--muted); font-size:13px;">— Francis Crick, Christof Koch</span> <span style="color:var(--muted); font-size:12px;">grado interno 6 · externo 3</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(57); return false;">Teoría de la información integrada</a> <span style="color:var(--muted); font-size:13px;">— Giulio Tononi, Christof Koch</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.105 · proyecta a C2×9, C4×7, C1×4, C3×2</span></li>
+        <li><a href="#" onclick="openDetail(138); return false;">Sistemas complejos y emergencia</a> <span style="color:var(--muted); font-size:13px;">— Stuart Kauffman, Murray Gell-Mann</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.017 · proyecta a C2×1, C1×1, C7×1, C3×1, C4×1</span></li>
+        <li><a href="#" onclick="openDetail(64); return false;">Correlatos neurales de la consciencia</a> <span style="color:var(--muted); font-size:13px;">— Francis Crick, Christof Koch</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.016 · proyecta a C2×2, C3×1</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster-block" style="border-left: 4px solid #6A994E; padding: 12px 18px 16px; margin-bottom: 28px; background: rgba(0,0,0,0.02); border-radius: 0 4px 4px 0;">
+      <h3 style="margin-top:0; color:#6A994E;">C7 — Cosmovisiones indígenas y animistas <span style="font-weight:normal; color:var(--muted); font-size:14px;">· 15 teorías · el territorio más periférico</span></h3>
+      <p style="margin:6px 0 12px; font-family:'Inter', sans-serif; font-size:13px; color:var(--muted);"><strong>Disciplinas:</strong> Tradición indígena (8) · Psicología (3) · Biología (1) · Teología (1)<br><strong>Épocas:</strong> Segunda mitad siglo XX (4) · Antigüedad (≤500 d.C.) (4) · Medieval (500-1500) (3)<br><strong>Regiones:</strong> Europa (4) · Latinoamérica (4) · Norteamérica (2)<br><strong>Aristas hacia otros clusters:</strong> 33</p>
+      <p style="margin:8px 0;">El cluster más aislado del corpus, con solo 33 aristas externas — menos que cualquier otro. Es coherente con su carácter: las cosmovisiones indígenas están documentadas principalmente en su contexto cultural, con pocas influencias bidireccionales hacia el pensamiento académico occidental. Gaia juega un papel singular: es una teoría occidental que por razones históricas (ecocentrismo, autoregulación planetaria) conecta naturalmente con Pachamama y las cosmologías animistas. Ubuntu introduce además una dimensión fuera del eje indo-precolombino.</p>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías centrales (mayor grado dentro del cluster):</p>
+      <ul style="margin:0 0 8px 0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(179); return false;">Camaquen y tonalidad en cosmovisión andina</a> <span style="color:var(--muted); font-size:13px;">— Tradición quechua y aimara</span> <span style="color:var(--muted); font-size:12px;">grado interno 8 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(187); return false;">Pachamama y ecología profunda indígena</a> <span style="color:var(--muted); font-size:13px;">— Cosmovisión andina contemporánea, Sumak Kawsay</span> <span style="color:var(--muted); font-size:12px;">grado interno 6 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(178); return false;">Teyolía, tonalli e ihíyotl mexicas</a> <span style="color:var(--muted); font-size:13px;">— Sahagún (cronista), tradición náhuatl</span> <span style="color:var(--muted); font-size:12px;">grado interno 5 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(182); return false;">Tradiciones chamánicas circumpolares</a> <span style="color:var(--muted); font-size:13px;">— Tradición tungusa, inuit, sami, tuvana</span> <span style="color:var(--muted); font-size:12px;">grado interno 5 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(186); return false;">Maori y whakapapa</a> <span style="color:var(--muted); font-size:13px;">— Mason Durie, tradición maorí</span> <span style="color:var(--muted); font-size:12px;">grado interno 5 · externo 0</span></li>
+        <li><a href="#" onclick="openDetail(188); return false;">Trance ritual y posesión</a> <span style="color:var(--muted); font-size:13px;">— Gilbert Rouget, antropología comparada</span> <span style="color:var(--muted); font-size:12px;">grado interno 5 · externo 0</span></li>
+      </ul>
+      <p style="font-weight:600; margin:14px 0 4px; font-size:14px;">Teorías puente (alta proyección hacia otros clusters):</p>
+      <ul style="margin:0; padding-left:24px;">
+        <li><a href="#" onclick="openDetail(96); return false;">Hipótesis de Gaia</a> <span style="color:var(--muted); font-size:13px;">— James Lovelock, Lynn Margulis</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.035 · proyecta a C4×3, C1×3, C3×2, C6×1</span></li>
+        <li><a href="#" onclick="openDetail(129); return false;">Disociación y consciencia múltiple</a> <span style="color:var(--muted); font-size:13px;">— Pierre Janet, Frank Putnam</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.022 · proyecta a C5×3, C4×1, C2×1</span></li>
+        <li><a href="#" onclick="openDetail(184); return false;">Ubuntu y persona-en-comunidad</a> <span style="color:var(--muted); font-size:13px;">— John Mbiti, Desmond Tutu</span> <span style="color:var(--muted); font-size:12px;">betweenness 0.019 · proyecta a C5×3, C1×1, C4×1</span></li>
+      </ul>
+    </div>
+
+      <h3 style="margin-top:32px;">Mapa de afinidades inter-cluster</h3>
+      <p>Los pares de clusters más conectados entre sí (más aristas en común):</p>
+      <ul>
+        <li><strong>C1 ↔ C2</strong>: 28 aristas <span style="color:var(--muted); font-size:12px;">— Cognición encarnada y enactiva ↔ Funcionalismo computacional y filosofía analítica</span></li>
+        <li><strong>C3 ↔ C4</strong>: 28 aristas <span style="color:var(--muted); font-size:12px;">— Tradiciones contemplativas y ciencia de la meditación ↔ Metafísicas idealistas, cuánticas y panpsíquicas</span></li>
+        <li><strong>C2 ↔ C6</strong>: 23 aristas <span style="color:var(--muted); font-size:12px;">— Funcionalismo computacional y filosofía analítica ↔ Neurociencia empírica estricta</span></li>
+        <li><strong>C1 ↔ C3</strong>: 20 aristas <span style="color:var(--muted); font-size:12px;">— Cognición encarnada y enactiva ↔ Tradiciones contemplativas y ciencia de la meditación</span></li>
+        <li><strong>C1 ↔ C5</strong>: 18 aristas <span style="color:var(--muted); font-size:12px;">— Cognición encarnada y enactiva ↔ Consciencia como construcción sociocultural</span></li>
+        <li><strong>C2 ↔ C5</strong>: 15 aristas <span style="color:var(--muted); font-size:12px;">— Funcionalismo computacional y filosofía analítica ↔ Consciencia como construcción sociocultural</span></li>
+        <li><strong>C1 ↔ C4</strong>: 13 aristas <span style="color:var(--muted); font-size:12px;">— Cognición encarnada y enactiva ↔ Metafísicas idealistas, cuánticas y panpsíquicas</span></li>
+        <li><strong>C2 ↔ C4</strong>: 13 aristas <span style="color:var(--muted); font-size:12px;">— Funcionalismo computacional y filosofía analítica ↔ Metafísicas idealistas, cuánticas y panpsíquicas</span></li>
+      </ul>
+      <p>El eje <strong>C1 ↔ C2</strong> (4E vs Funcionalismo) es el gran eje de oposición/diálogo del debate cognitivo contemporáneo. El eje <strong>C3 ↔ C4</strong> (Contemplativo vs Metafísica idealista) muestra que las propuestas alternativas al fisicalismo convergen entre sí. <strong>C7 (indígenas) es el cluster más periférico</strong> del corpus, con menos aristas externas que cualquier otro.</p>
+
+      <h3 style="margin-top:32px;">Hallazgos principales</h3>
+      <ol>
+        <li><strong>El 4E cognition (C1) es el verdadero centro estructural del grafo</strong>, no la neurociencia empírica. Tiene la mayor betweenness y conecta con los siete clusters.</li>
+        <li><strong>Tres teorías son embajadoras totales</strong> (centrales en su cluster + puentes + top del Score Sintético): <em>Enactivismo</em> (C1), <em>Teoría de la información integrada</em> (C6) y <em>Cognitivismo computacional</em> (C2). Si quisieras reducir el catálogo a tres referencias, estas permitirían abrir cualquier conversación.</li>
+        <li><strong>El cluster sociocultural (C5) es invisible al Score Sintético</strong>: ninguna de sus teorías entra al top 20 del SS. Su relevancia es densa intra-cluster pero no proyecta hacia el resto del corpus.</li>
+        <li><strong>Las tradiciones contemplativas (C3) y las metafísicas idealistas (C4) se legitiman mutuamente</strong>: comparten el rechazo al fisicalismo y por eso aparecen como el segundo gran eje del grafo.</li>
+        <li><strong>Las cosmovisiones indígenas (C7) siguen siendo un territorio relativamente cerrado</strong> en la bibliografía académica del corpus. Una observación descriptiva, no normativa.</li>
+      </ol>
     </div>
 
     <div id="viewInfo" style="display:none;" class="info-view">
@@ -2017,13 +2237,28 @@ function updateViewDisplay() {
   document.getElementById("viewDetail").style.display = (state.view === "detail") ? "" : "none";
   document.getElementById("viewMap").style.display = (state.view === "map") ? "" : "none";
   document.getElementById("viewInfo").style.display = (state.view === "info") ? "" : "none";
+  document.getElementById("viewClusters").style.display = (state.view === "clusters") ? "" : "none";
   ["sintetico","integracion","transversalidad","cobertura","persistencia","difusion"].forEach(k => {
     const cap = k.charAt(0).toUpperCase() + k.slice(1);
     const n = document.getElementById("viewScore" + cap);
     if (n) n.style.display = (state.view === "score-" + k) ? "" : "none";
   });
+  // Top-tab active state
   document.querySelectorAll(".view-tab").forEach(tab => {
-    tab.classList.toggle("active", tab.dataset.view === state.view);
+    let isActive = false;
+    if (tab.dataset.top === "scores") {
+      isActive = state.view && state.view.indexOf("score-") === 0;
+    } else if (tab.dataset.view) {
+      isActive = tab.dataset.view === state.view;
+    }
+    tab.classList.toggle("active", isActive);
+  });
+  // Sub-tab bar visibility + active state
+  const inScores = state.view && state.view.indexOf("score-") === 0;
+  const subbar = document.getElementById("scoreSubtabs");
+  if (subbar) subbar.style.display = inScores ? "flex" : "none";
+  document.querySelectorAll(".view-subtab").forEach(b => {
+    b.classList.toggle("subactive", b.dataset.view === state.view);
   });
   if (state.view === "map") setTimeout(renderNetwork, 50);
 }
@@ -2106,10 +2341,21 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("sortSelect").addEventListener("change", e => { state.sort = e.target.value; renderList(); });
   document.querySelectorAll(".view-tab").forEach(tab => {
     tab.addEventListener("click", () => {
-      state.view = tab.dataset.view;
+      if (tab.dataset.top === "scores") {
+        // Open scores group → default to Score Sintético
+        state.view = "score-sintetico";
+      } else if (tab.dataset.view) {
+        state.view = tab.dataset.view;
+      }
       if (state.view === "map") networkInstance = null;
       updateViewDisplay();
       if (state.view === "list") renderList();
+    });
+  });
+  document.querySelectorAll(".view-subtab").forEach(b => {
+    b.addEventListener("click", () => {
+      state.view = b.dataset.view;
+      updateViewDisplay();
     });
   });
   document.querySelectorAll(".filter-clear").forEach(el => {
