@@ -146,6 +146,22 @@ main.content {
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+.view-tab[data-top="propuesta"] {
+  background: rgba(122, 46, 31, 0.15);
+  color: var(--accent);
+  border-radius: 4px 4px 0 0;
+  margin: 0 2px;
+  font-weight: 600;
+}
+.view-tab[data-top="propuesta"]:hover {
+  background: rgba(122, 46, 31, 0.22);
+  color: var(--accent);
+}
+.view-tab[data-top="propuesta"].active {
+  background: rgba(122, 46, 31, 0.18);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
 
 /* ---------------- SEARCH ---------------- */
 .search-box {
@@ -642,12 +658,12 @@ main.content {
 
   <main class="content">
     <div class="view-tabs">
-      <button class="view-tab active" data-view="list">LISTADO</button>
-      <button class="view-tab" data-view="map">1. MAPA DE CONEXIONES</button>
-      <button class="view-tab" data-top="scores">2. SCORE DE RELEVANCIA</button>
-      <button class="view-tab" data-view="clusters">3. CLUSTERS EMERGENTES</button>
-      <button class="view-tab" data-view="conclusiones">4. TEORÍAS VERTEBRADORAS</button>
-      <button class="view-tab" data-top="propuesta">5. PROPUESTA DE UNIFICACION</button>
+      <button class="view-tab active" data-view="list">1. CATÁLOGO<br>DE TEORÍAS</button>
+      <button class="view-tab" data-view="map">2. MAPA DE CONEXIONES</button>
+      <button class="view-tab" data-top="scores">3. SCORE DE RELEVANCIA</button>
+      <button class="view-tab" data-view="clusters">4. CLUSTERS EMERGENTES</button>
+      <button class="view-tab" data-view="conclusiones">5. TEORÍAS VERTEBRADORAS</button>
+      <button class="view-tab" data-top="propuesta">6. PROPUESTA DE UNIFICACION</button>
       <button class="view-tab" data-view="info">ACERCA DE</button>
     </div>
     <div class="view-subtabs" id="scoreSubtabs" style="display:none;">
@@ -994,7 +1010,7 @@ main.content {
     </div>
     <div id="viewPropuestaObjetivo" style="display:none;" class="info-view score-view">
       <h2>Objetivo de la propuesta</h2>
-      <p>Esta sección desarrolla dos alternativas de <strong>teoría unificada de la consciencia</strong> que toman como punto de partida las cinco teorías vertebradoras identificadas en la sección <em>Teorías vertebradoras</em>: Vedanta advaita, Teoría de la información integrada (IIT), Enactivismo, Cognitivismo computacional y Constructivismo social del yo.</p>
+      <p>Esta sección desarrolla dos alternativas de <strong>teoría unificada de la consciencia</strong> que toman como punto de partida las cinco teorías vertebradoras identificadas en la sección <em>5. Teorías vertebradoras</em>: Vedanta advaita, Teoría de la información integrada (IIT), Enactivismo, Cognitivismo computacional y Constructivismo social del yo.</p>
 
       <p>El propósito no es elegir una teoría como la verdadera ni catalogar todas las propuestas integradoras existentes. Es <strong>intentar una integración real</strong> de las cinco visiones, viéndolas como complementarias — planteamientos parciales desde diferentes perspectivas — y no como rivales que se anulan mutuamente. Para que la integración sea efectiva y no meramente yuxtapuesta, se adopta un modelo <strong>jerárquico</strong>: una de las cinco teorías ocupa la posición fundacional ontológica, y las otras se articulan sobre ella como descripciones de niveles sucesivos del fenómeno.</p>
 
@@ -1185,11 +1201,17 @@ main.content {
         texto de las fichas. La pestaña <strong>Mapa de conexiones</strong> permite
         ver las teorías como un grafo interactivo: dos teorías están unidas cuando
         existe entre ellas una relación de influencia, herencia o crítica. Las
-        cinco pestañas de <strong>Score</strong> muestran rankings cuantitativos del
-        catálogo desde ángulos distintos (ver la sección siguiente). La pestaña
+        pestañas de <strong>Score</strong> muestran rankings cuantitativos del
+        catálogo desde distintos análisis del grafo. La pestaña
         <strong>Clusters emergentes</strong> agrupa todo el catálogo en siete familias
         temáticas que surgen del propio grafo de conexiones, identificando las teorías
-        centrales y puente de cada una.
+        centrales y puente de cada una. La pestaña <strong>Teorías vertebradoras</strong>
+        identifica un conjunto reducido de teorías que son simultáneamente centrales en
+        su cluster y proyectivas hacia el resto del corpus, ofreciendo una "biblioteca
+        mínima" capaz de abrir el conjunto del catálogo. Por último, la pestaña
+        <strong>Propuesta de unificación</strong> plantea dos propuestas alternativas
+        (ontológicamente opuestas) de integración de las teorías vertebradoras en una
+        teoría unificada.
       </p>
       <h3>Estructura de las fichas</h3>
       <p>
@@ -1250,14 +1272,12 @@ main.content {
       </p>
       <h3>Teorías vertebradoras</h3>
       <p>
-        Las <strong>teorías vertebradoras</strong> del corpus se identifican cruzando tres análisis
-        independientes: el Score Sintético (perfil multidimensional), los clusters emergentes
-        (representatividad interna y proyección hacia otros grupos) y la cobertura óptima del grafo
-        (qué subconjunto de teorías permite alcanzar la mayor parte del catálogo en dos saltos por
-        las conexiones). La convergencia de los tres criterios señala un conjunto reducido de teorías
-        que son simultáneamente <em>centrales en su cluster</em> y <em>proyectivas hacia el resto del
-        corpus</em>, ofreciendo una "biblioteca mínima" capaz de abrir el conjunto del catálogo desde
-        un número pequeño de puntos de entrada.
+        Las <strong>teorías vertebradoras</strong> del corpus se identifican cruzando los análisis
+        del Score Sintético (perfil multidimensional) y de los clusters emergentes (representatividad
+        interna y proyección hacia otros grupos). De este modo emerge una "biblioteca mínima" de cinco
+        teorías que cubren prácticamente todo el catálogo. Cada una es óptima desde dos criterios
+        independientes que convergen en los mismos nombres: son a la vez <em>localmente representativas</em>
+        (centrales en su cluster) y <em>globalmente proyectivas</em> (relevantes en múltiples scores).
       </p>
       <h3>Propuesta de unificación</h3>
       <p>
@@ -1279,11 +1299,10 @@ main.content {
       <h3>Limitaciones</h3>
       <p>
         La selección de teorías no es enciclopédica en el sentido estricto: es necesariamente
-        parcial y se ha intentado ser representativo más que exhaustivo. Muchas
-        tradiciones orales, sobre todo indígenas, se recogen de forma muy
-        resumida y con la advertencia de que el propio acto de 'teorizar' sobre
-        ellas ya implica cierto desajuste epistémico. También hay solapamientos
-        inevitables: varias teorías son refinamientos o variantes de otras.
+        parcial y se ha intentado ser representativo más que exhaustivo. También hay solapamientos
+        inevitables: varias teorías son refinamientos o variantes de otras. Los análisis realizados
+        se basan en el grafo de conexiones del catálogo, considerando todas las teorías como nodos
+        igualmente relevantes, sin hacer distinciones de mayor o menor validez epistemológica.
       </p>
       <p style="margin-top:40px; font-size:14px; color:var(--muted); font-family:Inter,sans-serif; line-height:1.7;">
         Creado como proyecto de catálogo abierto<br>
